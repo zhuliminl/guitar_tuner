@@ -8,7 +8,6 @@ export const LargeTitle = ({title = '标题'}) => {
       style={{
         marginTop: Theme.sizePagePadding,
         marginLeft: Theme.sizePagePadding,
-        marginBottom: Theme.sizeCardPadding,
       }}>
       <Text
         style={{
