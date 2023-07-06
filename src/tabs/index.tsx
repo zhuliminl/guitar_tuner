@@ -5,6 +5,7 @@ import Jazz from '../_jazz/home';
 import Mine from '../_mine/home';
 import Tools from '../_tools/home';
 import Tuner from '../_tuner/home';
+import {Theme} from '../utils/Theme';
 
 const Tab = createBottomTabNavigator();
 export default () => {
@@ -14,16 +15,18 @@ export default () => {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
-          borderTopLeftRadius: 16,
-          borderTopRightRadius: 16,
+          position: 'absolute',
+          bottom: 10,
+          left: 10,
+          right: 10,
+          borderRadius: Theme.borderRadiusLarge,
           borderTopWidth: 0,
-          height: 50,
-          // backgroundColor: 'red',
+          height: Theme.sizeTabHeight,
+          backgroundColor: Theme.bgColorPrimary,
+          elevation: 0,
+          shadowOffset: {width: 0, height: -20},
         },
-        tabBarItemStyle: {
-          flex: 1,
-          flexDirection: 'column',
-        },
+        tabBarItemStyle: {},
       }}>
       <Tab.Screen
         name="Tuner"
@@ -69,7 +72,6 @@ const Icon = ({label = '', focused = false}) => {
   return (
     <View
       style={{
-        // backgroundColor: '#EEE',
         width: '100%',
         flex: 1,
         justifyContent: 'center',
@@ -77,7 +79,8 @@ const Icon = ({label = '', focused = false}) => {
       }}>
       <Text
         style={{
-          color: focused ? 'red' : '#999',
+          fontSize: Theme.fontSizeDefault,
+          color: focused ? Theme.colorBrand : Theme.fontColorQuaternary,
         }}>
         {label}
       </Text>
