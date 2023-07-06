@@ -1,13 +1,16 @@
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import type {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {RootStackParamList} from '../../tabs';
 
-export default ({navigation}: NativeStackNavigationProp) => {
+type Props = BottomTabScreenProps<RootStackParamList, 'Jazz'>;
+
+export default ({route, navigation}: Props) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('Setting', {});
+          navigation.navigate('Mine');
         }}>
         <Text style={styles.title}>{'Jazz Home'}</Text>
       </TouchableOpacity>

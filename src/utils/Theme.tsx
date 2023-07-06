@@ -8,7 +8,7 @@ export const Theme = {
   windowWidth,
   colorBrand: '#8f432e',
   colorBrandSecond: '#8f432e',
-  bgColorPrimary: '#FFF',
+  bgColorPrimary: '#EEE',
   bgColorSecondary: '#EEE',
   colorDivide: '#999',
   colorSuccess: 'red',

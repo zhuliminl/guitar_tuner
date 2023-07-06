@@ -1,10 +1,13 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import type {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
+import {RootStackParamList} from '../../tabs';
 
-export default () => {
+type Props = BottomTabScreenProps<RootStackParamList, 'Jazz'>;
+export default ({navigation}: Props) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{'Tuner Home'}</Text>
+      <Text>jj</Text>
     </View>
   );
 };

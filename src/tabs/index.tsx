@@ -7,7 +7,13 @@ import Tools from '../_tools/home';
 import Tuner from '../_tuner/home';
 import {Theme} from '../utils/Theme';
 
-const Tab = createBottomTabNavigator();
+export type RootStackParamList = {
+  Tuner: undefined;
+  Tools: undefined;
+  Jazz: undefined;
+  Mine: undefined;
+};
+const Tab = createBottomTabNavigator<RootStackParamList>();
 export default () => {
   return (
     <Tab.Navigator
@@ -22,7 +28,7 @@ export default () => {
           borderRadius: Theme.borderRadiusLarge,
           borderTopWidth: 0,
           height: Theme.sizeTabHeight,
-          backgroundColor: Theme.bgColorPrimary,
+          backgroundColor: Theme.colorWhite,
           elevation: 0,
           shadowOffset: {width: 0, height: -20},
         },

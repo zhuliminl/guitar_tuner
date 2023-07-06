@@ -69,7 +69,7 @@ export const CellGroup = ({title = '', ...props}) => {
         marginLeft: Theme.sizePagePadding,
         marginRight: Theme.sizePagePadding,
         borderRadius: Theme.borderRadiusLarge,
-        backgroundColor: Theme.bgColorPrimary,
+        backgroundColor: Theme.colorWhite,
       }}>
       <Text
         style={{
