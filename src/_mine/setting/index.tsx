@@ -1,10 +1,23 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {Nav} from '../../components/Nav';
+import {Cell, CellGroup} from '../../components/Cell';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
-export default () => {
+export default ({navigation}: NativeStackNavigationProp) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{'设置'}</Text>
+      <Nav title="设置" />
+      <CellGroup title="设置">
+        <Cell title="联系我们" desc="您可以通过一些方式等收到返赛" />
+        <Cell title="关于萤石云" />
+        <Cell
+          title="版本信息"
+          onPress={() => {
+            navigation.push('Setting');
+          }}
+        />
+      </CellGroup>
     </View>
   );
 };
@@ -12,8 +25,6 @@ export default () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   title: {
     color: '#333',

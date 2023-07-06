@@ -35,7 +35,7 @@ export const Theme = {
   borderRadiusUltra: scale * 4,
   sizeTabHeight: scale * 16,
   sizeCellHeight: scale * 11,
-  sizeHeaderHeight: scale * 16,
+  sizeHeaderHeight: scale * 12,
   sizeIconSmallHeight: scale * 4,
   sizeIconMiddleHeight: scale * 6,
   sizePagePadding: scale * 4,

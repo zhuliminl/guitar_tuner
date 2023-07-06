@@ -1,12 +1,13 @@
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-export default ({navigation}) => {
+export default ({navigation}: NativeStackNavigationProp) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('Setting');
+          navigation.navigate('Setting', {});
         }}>
         <Text style={styles.title}>{'Jazz Home'}</Text>
       </TouchableOpacity>
