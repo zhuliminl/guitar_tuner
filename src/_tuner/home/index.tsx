@@ -2,12 +2,13 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import type {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
 import {RootStackParamList} from '../../tabs';
+import {LargeTitle} from '../../components/LargeTitle';
 
-type Props = BottomTabScreenProps<RootStackParamList, 'Jazz'>;
+type Props = BottomTabScreenProps<RootStackParamList, 'Tuner'>;
 export default ({navigation}: Props) => {
   return (
     <View style={styles.container}>
-      <Text>jj</Text>
+      <LargeTitle title={'调音器'} />
     </View>
   );
 };
@@ -15,8 +16,6 @@ export default ({navigation}: Props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   title: {
     color: '#333',
