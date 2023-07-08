@@ -7,6 +7,18 @@ import {Theme} from './utils/Theme';
 
 const Stack = createNativeStackNavigator();
 
+const config = {
+  animation: 'spring',
+  config: {
+    stiffness: 1000,
+    damping: 500,
+    mass: 3,
+    overshootClamping: true,
+    restDisplacementThreshold: 0.01,
+    restSpeedThreshold: 0.01,
+  },
+};
+
 export default () => {
   return (
     <NavigationContainer
@@ -22,7 +34,15 @@ export default () => {
           headerShown: false,
         }}>
         <Stack.Screen name="Tabs" component={Tabs} />
-        <Stack.Screen name="Setting" component={Setting} />
+        <Stack.Screen
+          name="Setting"
+          component={Setting}
+          // options={{
+          //   gestureEnabled: false,
+          //   animation: 'slide_from_bottom',
+          //   animationDuration: 10,
+          // }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
