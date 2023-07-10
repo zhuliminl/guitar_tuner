@@ -19,8 +19,8 @@ export default ({navigation}: Props) => {
       <LargeTitle title={'调音器'} />
       <TouchableOpacity
         onPress={async () => {
+          console.log('saul VVVVVVVVVV', RTNCalculator);
           const value = await RTNCalculator?.add(3, 7);
-          console.log('saul VVVVVVVVVV', value);
           setResult(value ?? null);
         }}>
         <Text>Test</Text>
