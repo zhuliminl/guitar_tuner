@@ -1,4 +1,7 @@
 rootProject.name = 'guitar_tuner'
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
-include ':app'
+//include ':app'
+include ':app', ':RTNCalculator'
+project(':RTNCalculator').projectDir = new File('../../RTNCalculator/android')
+
 includeBuild('../node_modules/@react-native/gradle-plugin')
