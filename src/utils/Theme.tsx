@@ -43,4 +43,6 @@ export const Theme = {
   sizeTitlePadding: scale * 2,
   sizeTagPadding: scale * 1,
   sizeTextPadding: scale * 1,
+  sizeFullButtonWidth: $pt(375 - 44),
+  sizeFullButtonHeight: scale * 11,
 };
