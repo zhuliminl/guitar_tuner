@@ -1,20 +1,16 @@
+import type {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
 import React, {useEffect, useState} from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  TurboModuleRegistry,
   NativeEventEmitter,
   NativeModules,
-  DeviceEventEmitter,
+  StyleSheet,
+  View,
 } from 'react-native';
-import type {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
-import {RootStackParamList} from '../../tabs';
-import {LargeTitle} from '../../components/LargeTitle';
+import {PERMISSIONS, RESULTS, check, request} from 'react-native-permissions';
 import RTNCalculator from 'rtn-calculator/js/NativeCalculator';
-import {check, PERMISSIONS, RESULTS, request} from 'react-native-permissions';
 import FullButton from '../../components/FullButton';
+import {LargeTitle} from '../../components/LargeTitle';
+import {RootStackParamList} from '../../tabs';
 
 // const eventEmitter = new NativeEventEmitter(RTNCalculator)
 
@@ -22,15 +18,19 @@ type Props = BottomTabScreenProps<RootStackParamList, 'Tuner'>;
 export default ({navigation}: Props) => {
   const [result, setResult] = useState<number | null>(null);
   useEffect(() => {
+    console.log('saul BBBBB');
     RTNCalculator?.init({
       bufferSize: 4096,
       sampleRate: 44100,
       bitsPerChannel: 16,
       channelsPerFrame: 1,
     });
-    const sub = DeviceEventEmitter.addListener('recording', data => {
-      console.log('saul 录音珊珊', data);
-    });
+    const sub = new NativeEventEmitter(NativeModules.RTNCalculator).addListener(
+      'recording',
+      data => {
+        console.log('saul 录音珊珊', data);
+      },
+    );
     return sub.remove();
   }, []);
 
@@ -81,7 +81,7 @@ export default ({navigation}: Props) => {
         title="开始录音"
         onPress={() => {
           console.log('saul NNNN', NativeModules);
-          // RTNCalculator?.start();
+          RTNCalculator?.start(() => {});
         }}
       />
       <FullButton
