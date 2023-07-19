@@ -1,8 +1,8 @@
-import React, {FC} from 'react';
-import Svg, {Path} from 'react-native-svg';
+import React, { FC } from 'react';
+import Svg, { Path } from 'react-native-svg';
 import defaultSvgs from './svg';
-import {Theme} from '../../utils/Theme';
-import {ViewStyle} from 'react-native';
+import { Theme } from '../../utils/Theme';
+import { ViewStyle } from 'react-native';
 
 export interface IProps {
   /**

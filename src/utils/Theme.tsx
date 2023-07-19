@@ -1,5 +1,5 @@
-import {Dimensions} from 'react-native';
-const {width: windowWidth} = Dimensions.get('window');
+import { Dimensions } from 'react-native';
+const { width: windowWidth } = Dimensions.get('window');
 
 export const $pt = (value: number) => (value * windowWidth) / 375;
 const scale = 4;

@@ -1,11 +1,11 @@
-import type {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
+import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {RootStackParamList} from '../../tabs';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { RootStackParamList } from '../../tabs';
 
 type Props = BottomTabScreenProps<RootStackParamList, 'Jazz'>;
 
-export default ({route, navigation}: Props) => {
+export default ({ route, navigation }: Props) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity

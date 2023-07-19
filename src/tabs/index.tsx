@@ -1,11 +1,11 @@
-import {View, Text} from 'react-native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { View, Text } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import Jazz from '../_jazz/home';
 import Mine from '../_mine/home';
 import Tools from '../_tools/home';
 import Tuner from '../_tuner/home';
-import {Theme} from '../utils/Theme';
+import { Theme } from '../utils/Theme';
 
 export type RootStackParamList = {
   Tuner: undefined;
@@ -30,7 +30,7 @@ export default () => {
           height: Theme.sizeTabHeight,
           backgroundColor: Theme.colorWhite,
           elevation: 0,
-          shadowOffset: {width: 0, height: -20},
+          shadowOffset: { width: 0, height: -20 },
         },
         tabBarItemStyle: {},
       }}>
@@ -38,7 +38,7 @@ export default () => {
         name="Tuner"
         component={Tuner}
         options={{
-          tabBarIcon: ({...props}) => {
+          tabBarIcon: ({ ...props }) => {
             return <Icon label="调音" {...props} />;
           },
         }}
@@ -47,7 +47,7 @@ export default () => {
         name="Tools"
         component={Tools}
         options={{
-          tabBarIcon: ({...props}) => {
+          tabBarIcon: ({ ...props }) => {
             return <Icon label="工具" {...props} />;
           },
         }}
@@ -56,7 +56,7 @@ export default () => {
         name="Jazz"
         component={Jazz}
         options={{
-          tabBarIcon: ({...props}) => {
+          tabBarIcon: ({ ...props }) => {
             return <Icon label="爵士" {...props} />;
           },
         }}
@@ -65,7 +65,7 @@ export default () => {
         name="Mine"
         component={Mine}
         options={{
-          tabBarIcon: ({...props}) => {
+          tabBarIcon: ({ ...props }) => {
             return <Icon label="我的" {...props} />;
           },
         }}
@@ -74,7 +74,7 @@ export default () => {
   );
 };
 
-const Icon = ({label = '', focused = false}) => {
+const Icon = ({ label = '', focused = false }) => {
   return (
     <View
       style={{

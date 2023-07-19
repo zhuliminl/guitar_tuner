@@ -1,10 +1,10 @@
 import React from 'react';
-import {TouchableOpacity, View, Text} from 'react-native';
-import {Theme} from '../../utils/Theme';
+import { TouchableOpacity, View, Text } from 'react-native';
+import { Theme } from '../../utils/Theme';
 import IconFont from '../iconFont';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
-export const Nav = ({title = '标题'}) => {
+export const Nav = ({ title = '标题' }) => {
   const navigation = useNavigation();
   return (
     <View

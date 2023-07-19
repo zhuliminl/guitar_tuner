@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {Cell, CellGroup} from '../../components/Cell';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {LargeTitle} from '../../components/LargeTitle';
+import { View, Text, StyleSheet } from 'react-native';
+import { Cell, CellGroup } from '../../components/Cell';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { LargeTitle } from '../../components/LargeTitle';
 
-export default ({navigation}: NativeStackNavigationProp) => {
+export default ({ navigation }: NativeStackNavigationProp) => {
   return (
     <View style={styles.container}>
       <LargeTitle title="我的页面" />

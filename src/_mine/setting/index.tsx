@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {Nav} from '../../components/Nav';
-import {Cell, CellGroup} from '../../components/Cell';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import { View, Text, StyleSheet } from 'react-native';
+import { Nav } from '../../components/Nav';
+import { Cell, CellGroup } from '../../components/Cell';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-export default ({navigation}: NativeStackNavigationProp) => {
+export default ({ navigation }: NativeStackNavigationProp) => {
   return (
     <View style={styles.container}>
       <Nav title="设置" />

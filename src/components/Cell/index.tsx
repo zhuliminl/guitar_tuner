@@ -1,6 +1,6 @@
 import React from 'react';
-import {TouchableOpacity, Text, View} from 'react-native';
-import {Theme} from '../../utils/Theme';
+import { TouchableOpacity, Text, View } from 'react-native';
+import { Theme } from '../../utils/Theme';
 import IconFont from '../iconFont';
 
 export const Cell = ({
@@ -57,7 +57,7 @@ export const Cell = ({
   );
 };
 
-export const CellGroup = ({title = '', ...props}) => {
+export const CellGroup = ({ title = '', ...props }) => {
   return (
     <View
       style={{

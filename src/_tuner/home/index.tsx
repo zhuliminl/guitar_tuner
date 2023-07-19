@@ -1,37 +1,33 @@
-import type {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
-import React, {useEffect, useState} from 'react';
-import {
-  NativeEventEmitter,
-  NativeModules,
-  StyleSheet,
-  View,
-} from 'react-native';
-import {PERMISSIONS, RESULTS, check, request} from 'react-native-permissions';
-import RTNCalculator from 'rtn-calculator/js/NativeCalculator';
+import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import React, { useEffect, useState } from 'react';
+import { NativeModules, StyleSheet, View } from 'react-native';
+import { PERMISSIONS, RESULTS, check, request } from 'react-native-permissions';
 import FullButton from '../../components/FullButton';
-import {LargeTitle} from '../../components/LargeTitle';
-import {RootStackParamList} from '../../tabs';
-
-// const eventEmitter = new NativeEventEmitter(RTNCalculator)
+import { LargeTitle } from '../../components/LargeTitle';
+import { RootStackParamList } from '../../tabs';
+import RecordingModule from '../../utils/RecordingModule';
+import withRecordAudioPermission from '../../utils/withRecordAudioPermission';
 
 type Props = BottomTabScreenProps<RootStackParamList, 'Tuner'>;
-export default ({navigation}: Props) => {
+export default ({ navigation }: Props) => {
   const [result, setResult] = useState<number | null>(null);
   useEffect(() => {
     console.log('saul BBBBB');
-    RTNCalculator?.init({
-      bufferSize: 4096,
-      sampleRate: 44100,
-      bitsPerChannel: 16,
-      channelsPerFrame: 1,
+    withRecordAudioPermission(status => {
+      if (status === RESULTS.GRANTED) {
+        // RecordingModule?.init({
+        //   bufferSize: 4096,
+        //   sampleRate: 44100,
+        //   bitsPerChannel: 16,
+        //   channelsPerFrame: 1,
+        // })
+      }
+      // 一套权限请求过程
     });
-    const sub = new NativeEventEmitter(NativeModules.RTNCalculator).addListener(
-      'recording',
-      data => {
-        console.log('saul 录音珊珊', data);
-      },
-    );
-    return sub.remove();
+
+    RecordingModule.addRecordingEventListener(data => {
+      // console.log('saul RRRRRRRRRRRRRRR', data);
+    });
   }, []);
 
   return (
@@ -80,14 +76,13 @@ export default ({navigation}: Props) => {
       <FullButton
         title="开始录音"
         onPress={() => {
-          console.log('saul NNNN', NativeModules);
-          RTNCalculator?.start(() => {});
+          RecordingModule?.start();
         }}
       />
       <FullButton
         title="停止录音"
         onPress={() => {
-          RTNCalculator?.stop();
+          RecordingModule?.stop();
         }}
       />
     </View>

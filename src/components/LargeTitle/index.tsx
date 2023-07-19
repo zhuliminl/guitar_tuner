@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {Theme} from '../../utils/Theme';
+import { View, Text } from 'react-native';
+import { Theme } from '../../utils/Theme';
 
-export const LargeTitle = ({title = '标题'}) => {
+export const LargeTitle = ({ title = '标题' }) => {
   return (
     <View
       style={{
