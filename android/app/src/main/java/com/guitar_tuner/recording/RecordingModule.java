@@ -67,12 +67,13 @@ class RecordingModule extends ReactContextBaseJavaModule {
         // https://developer.android.com/reference/android/media/AudioRecord.html
 
         int sampleRateInHz = 44100;
-        if (options.hasKey("sampleRate")) {
+        if (options != null && options.hasKey("sampleRate")) {
+
             sampleRateInHz = options.getInt("sampleRate");
         }
 
         int channelConfig = AudioFormat.CHANNEL_IN_MONO;
-        if (options.hasKey("channelsPerFrame")) {
+        if (options != null && options.hasKey("channelsPerFrame")) {
             int channelsPerFrame = options.getInt("channelsPerFrame");
 
             // every other case --> CHANNEL_IN_MONO
@@ -83,15 +84,14 @@ class RecordingModule extends ReactContextBaseJavaModule {
 
         // we support only 8-bit and 16-bit PCM
         int audioFormat = AudioFormat.ENCODING_PCM_16BIT;
-        if (options.hasKey("bitsPerChannel")) {
+        if (options != null && options.hasKey("bitsPerChannel")) {
             int bitsPerChannel = options.getInt("bitsPerChannel");
-
             if (bitsPerChannel == 8) {
                 audioFormat = AudioFormat.ENCODING_PCM_8BIT;
             }
         }
 
-        if (options.hasKey("bufferSize")) {
+        if (options != null && options.hasKey("bufferSize")) {
             this.bufferSize = options.getInt("bufferSize");
         } else {
             this.bufferSize = 8192;

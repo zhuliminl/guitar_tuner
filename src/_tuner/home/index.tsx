@@ -1,35 +1,38 @@
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import React, { useEffect, useState } from 'react';
-import { NativeModules, StyleSheet, View } from 'react-native';
-import { PERMISSIONS, RESULTS, check, request } from 'react-native-permissions';
+import { StyleSheet, View } from 'react-native';
 import FullButton from '../../components/FullButton';
 import { LargeTitle } from '../../components/LargeTitle';
+import { ToastType, useToast } from '../../components/ToastMessage';
 import { RootStackParamList } from '../../tabs';
 import RecordingModule from '../../utils/RecordingModule';
-import withRecordAudioPermission from '../../utils/withRecordAudioPermission';
-import { ToastType, useToast } from '../../components/ToastMessage';
+import { usePermissionRecordAudio } from '../../utils/usePermissionRecordAudio';
 
 type Props = BottomTabScreenProps<RootStackParamList, 'Tuner'>;
 export default ({ navigation }: Props) => {
   const [result, setResult] = useState<number | null>(null);
+
+  const withPermission = usePermissionRecordAudio();
+
   useEffect(() => {
-    console.log('saul BBBBB');
-    withRecordAudioPermission(status => {
-      if (status === RESULTS.GRANTED) {
-        RecordingModule?.init({
-          bufferSize: 4096,
-          sampleRate: 44100,
-          bitsPerChannel: 16,
-          channelsPerFrame: 1,
-        });
-      }
-      // 一套权限请求过程
+    withPermission(() => {
+      RecordingModule?.init({
+        bufferSize: 4096,
+        sampleRate: 44100,
+        bitsPerChannel: 16,
+        channelsPerFrame: 1,
+      });
+      showToast('开始录音初始化');
     });
 
-    RecordingModule.addRecordingEventListener(data => {
+    const sub = RecordingModule.addRecordingEventListener(data => {
       // console.log('saul RRRRRRRRRRRRRRR', data);
     });
+    return () => {
+      sub.remove();
+    };
   }, []);
+
   const showToast = useToast();
 
   return (
@@ -44,15 +47,18 @@ export default ({ navigation }: Props) => {
       <FullButton
         title="开始录音"
         onPress={() => {
-          showToast('开始录音', ToastType.Info);
-          // RecordingModule?.start();
+          withPermission(() => {
+            showToast('开始录音', ToastType.Info);
+            RecordingModule?.start();
+          });
         }}
       />
       <FullButton
         title="停止录音"
         onPress={() => {
-          showToast('开始录音', ToastType.Fail);
-          // RecordingModule?.stop();
+          withPermission(() => {
+            RecordingModule?.stop();
+          });
         }}
       />
     </View>

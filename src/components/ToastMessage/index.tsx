@@ -80,7 +80,7 @@ export default () => {
 
   const tY = value.interpolate({
     inputRange: [0, 1],
-    outputRange: [-Theme.sizeToastHeight, 0],
+    outputRange: [-Theme.sizeToastHeight, 10],
   });
 
   let iconColor = '#999';
@@ -103,6 +103,7 @@ export default () => {
   return (
     <Animated.View
       style={{
+        paddingRight: 10,
         position: 'absolute',
         top: 0,
         left: 10,
@@ -136,6 +137,7 @@ export default () => {
         style={{
           color: Theme.colorWhite,
           fontSize: Theme.fontSizeDesc,
+          flex: 1,
         }}>
         {message}
       </Text>
