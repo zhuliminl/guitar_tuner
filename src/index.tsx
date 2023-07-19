@@ -4,6 +4,7 @@ import React from 'react';
 import Setting from './_mine/setting';
 import Tabs from './tabs';
 import { Theme } from './utils/Theme';
+import ToastMessage from './components/ToastMessage';
 
 const Stack = createNativeStackNavigator();
 
@@ -44,6 +45,7 @@ export default () => {
           // }}
         />
       </Stack.Navigator>
+      <ToastMessage />
     </NavigationContainer>
   );
 };
