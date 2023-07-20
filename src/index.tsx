@@ -6,6 +6,7 @@ import Tabs from './tabs';
 import ToastMessage from './components/ToastMessage';
 import { useThemeStyle } from './hooks/useTheme';
 import { RootStackParamList } from './tabs';
+import AppearanceHost from './contexts/appearance';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -26,33 +27,35 @@ const config = {
 export default () => {
   const Theme = useThemeStyle();
   return (
-    <NavigationContainer
-      theme={{
-        ...DefaultTheme,
-        colors: {
-          ...DefaultTheme.colors,
-          background: Theme.bgColorPrimary,
-        },
-      }}>
-      <Stack.Navigator
-        initialRouteName="Tabs"
-        screenOptions={{
-          contentStyle: {},
-          headerShown: false,
+    <AppearanceHost>
+      <NavigationContainer
+        theme={{
+          ...DefaultTheme,
+          colors: {
+            ...DefaultTheme.colors,
+            background: Theme.bgColorPrimary,
+          },
         }}>
-        <Stack.Screen name="Tabs" component={Tabs} />
-        <Stack.Screen
-          name="ThemeSetting"
-          component={ThemeSetting}
-          options={
-            {
-              // gestureEnabled: false,
-              // animation: 'slide_from_right',
+        <Stack.Navigator
+          initialRouteName="Tabs"
+          screenOptions={{
+            contentStyle: {},
+            headerShown: false,
+          }}>
+          <Stack.Screen name="Tabs" component={Tabs} />
+          <Stack.Screen
+            name="ThemeSetting"
+            component={ThemeSetting}
+            options={
+              {
+                // gestureEnabled: false,
+                // animation: 'slide_from_right',
+              }
             }
-          }
-        />
-      </Stack.Navigator>
-      <ToastMessage />
-    </NavigationContainer>
+          />
+        </Stack.Navigator>
+        <ToastMessage />
+      </NavigationContainer>
+    </AppearanceHost>
   );
 };
