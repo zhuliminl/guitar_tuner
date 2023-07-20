@@ -2,7 +2,11 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { Theme } from '../../utils/Theme';
 
-export const LargeTitle = ({ title = '标题' }) => {
+interface Props {
+  title: number | string | undefined;
+}
+
+export const LargeTitle = ({ title = '标题' }: Props) => {
   return (
     <View
       style={{

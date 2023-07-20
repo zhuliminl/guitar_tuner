@@ -3,10 +3,10 @@ import { NativeModules, NativeEventEmitter } from 'react-native';
 const { Recording } = NativeModules;
 
 interface InitOptions {
-  bufferSize: number;
-  sampleRate: number;
-  bitsPerChannel: number;
-  channelsPerFrame: number;
+  bufferSize?: number;
+  sampleRate?: number;
+  bitsPerChannel?: number;
+  channelsPerFrame?: number;
 }
 
 export default {
