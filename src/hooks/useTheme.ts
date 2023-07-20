@@ -112,14 +112,14 @@ export const useThemeStyle = (options?: ThemeStyleOptions) => {
   }
 
   if (themeType === ThemeType.style1) {
-    style.bgColorPrimary = 'red';
-    style.bgColorSecondary = 'green';
+    style.bgColorPrimary = '#222';
+    style.bgColorSecondary = '#444';
 
     style.fontColorPrimary = '#FFF';
-    style.fontColorSecond = '#FFF';
-    style.fontColorTertiary = '#FFF';
-    style.fontColorQuaternary = '#FFF';
-    style.colorDivide = 'red';
+    style.fontColorSecond = '#EEE';
+    style.fontColorTertiary = '#DDD';
+    style.fontColorQuaternary = '#AAA';
+    style.colorDivide = '#666';
   }
 
   return style;

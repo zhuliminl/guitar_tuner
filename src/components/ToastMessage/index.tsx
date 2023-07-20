@@ -81,7 +81,7 @@ export default () => {
 
   const tY = value.interpolate({
     inputRange: [0, 1],
-    outputRange: [-Theme.sizeToastHeight, 10],
+    outputRange: [-Theme.sizeToastHeight, 20],
   });
 
   let iconColor = '#999';
