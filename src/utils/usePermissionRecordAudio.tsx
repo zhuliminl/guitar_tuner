@@ -6,12 +6,17 @@ import {
   request,
 } from 'react-native-permissions';
 import { ToastType, useToast } from '../components/ToastMessage';
+import { Platform } from 'react-native';
 
 // 实时权限包裹器
 export const usePermissionRecordAudio = () => {
   const showToast = useToast();
   return (call: () => void) => {
-    check(PERMISSIONS.ANDROID.RECORD_AUDIO)
+    check(
+      Platform.OS === 'android'
+        ? PERMISSIONS.ANDROID.RECORD_AUDIO
+        : PERMISSIONS.IOS.MICROPHONE,
+    )
       .then((result: PermissionStatus) => {
         switch (result) {
           case RESULTS.UNAVAILABLE:
@@ -22,7 +27,11 @@ export const usePermissionRecordAudio = () => {
             break;
           case RESULTS.DENIED:
             showToast('APP 需要您的设备录音权限', ToastType.Warning);
-            request(PERMISSIONS.ANDROID.RECORD_AUDIO)
+            request(
+              Platform.OS === 'android'
+                ? PERMISSIONS.ANDROID.RECORD_AUDIO
+                : PERMISSIONS.IOS.MICROPHONE,
+            )
               .then(res => {
                 if (res === RESULTS.GRANTED || res === RESULTS.LIMITED) {
                   call();

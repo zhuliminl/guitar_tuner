@@ -12,6 +12,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		D8BB4F552A690D34001E7B23 /* Recording.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BB4F542A690D34001E7B23 /* Recording.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,8 @@
 		5709B34CF0A7D63546082F79 /* Pods-guitar_tuner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guitar_tuner.release.xcconfig"; path = "Target Support Files/Pods-guitar_tuner/Pods-guitar_tuner.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-guitar_tuner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-guitar_tuner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = guitar_tuner/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D8BB4F532A690D23001E7B23 /* Recording.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Recording.h; sourceTree = "<group>"; };
+		D8BB4F542A690D34001E7B23 /* Recording.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Recording.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -43,6 +46,7 @@
 		13B07FAE1A68108700A75B9A /* guitar_tuner */ = {
 			isa = PBXGroup;
 			children = (
+				D8BB4F522A690D07001E7B23 /* Recording */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -98,6 +102,15 @@
 				5709B34CF0A7D63546082F79 /* Pods-guitar_tuner.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D8BB4F522A690D07001E7B23 /* Recording */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB4F532A690D23001E7B23 /* Recording.h */,
+				D8BB4F542A690D34001E7B23 /* Recording.m */,
+			);
+			path = Recording;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +282,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				D8BB4F552A690D34001E7B23 /* Recording.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
