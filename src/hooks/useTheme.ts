@@ -54,7 +54,7 @@ export const useThemeStyle = (options?: ThemeStyleOptions) => {
   }
 
   let style = {
-    bgColorPrimary: '#EEE',
+    bgColorPrimary: '#F5F6F7',
     bgColorSecondary: '#FFF',
 
     scale,
@@ -63,7 +63,7 @@ export const useThemeStyle = (options?: ThemeStyleOptions) => {
     colorBrandSecond: '#8f432e',
     colorDivide: '#999',
     colorSuccess: 'red',
-    colorSafe: 'green',
+    colorSafe: '#22c45c',
     colorWarning: 'yellow',
     colorInfo: '#999',
     colorToastBg: '#222',
@@ -105,10 +105,10 @@ export const useThemeStyle = (options?: ThemeStyleOptions) => {
     style.bgColorSecondary = '#333';
 
     style.fontColorPrimary = '#FFF';
-    style.fontColorSecond = '#FFF';
-    style.fontColorTertiary = '#FFF';
-    style.fontColorQuaternary = '#FFF';
-    style.colorDivide = 'red';
+    style.fontColorSecond = '#EEE';
+    style.fontColorTertiary = '#DDD';
+    style.fontColorQuaternary = '#AAA';
+    style.colorDivide = '#666';
   }
 
   if (themeType === ThemeType.style1) {

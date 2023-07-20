@@ -4,15 +4,16 @@ import { StyleSheet, View } from 'react-native';
 import { Nav } from '../../components/Nav';
 import { RootStackParamList } from '../../tabs';
 import AppThemeSwitch from './AppThemeSwitch';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ThemeSetting'>;
 
 export default ({ route, navigation }: Props) => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Nav title="主题设置" />
       <AppThemeSwitch />
-    </View>
+    </SafeAreaView>
   );
 };
 

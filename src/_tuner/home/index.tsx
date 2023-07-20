@@ -1,6 +1,7 @@
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import FullButton from '../../components/FullButton';
 import { LargeTitle } from '../../components/LargeTitle';
 import { ToastType, useToast } from '../../components/ToastMessage';
@@ -58,7 +59,7 @@ export default ({ navigation }: Props) => {
   const showToast = useToast();
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <LargeTitle title={'调音器'} />
       <FullButton
         title="获取录音权限"
@@ -87,7 +88,7 @@ export default ({ navigation }: Props) => {
       <LargeTitle title={note} />
       <LargeTitle title={standFrequency} />
       <LargeTitle title={octave} />
-    </View>
+    </SafeAreaView>
   );
 };
 

@@ -4,12 +4,13 @@ import { StyleSheet, View } from 'react-native';
 import { Cell, CellGroup } from '../../components/Cell';
 import { LargeTitle } from '../../components/LargeTitle';
 import { RootStackParamList } from '../../tabs';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type Props = BottomTabScreenProps<RootStackParamList, 'Mine'>;
 
 export default ({ route, navigation }: Props) => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <LargeTitle title="我的页面" />
       <CellGroup title="设置">
         <Cell title="联系我们" desc="您可以通过一些方式等收到返赛" />
@@ -21,7 +22,7 @@ export default ({ route, navigation }: Props) => {
           }}
         />
       </CellGroup>
-    </View>
+    </SafeAreaView>
   );
 };
 

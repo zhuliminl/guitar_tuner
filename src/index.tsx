@@ -37,17 +37,19 @@ export default () => {
       <Stack.Navigator
         initialRouteName="Tabs"
         screenOptions={{
+          contentStyle: {},
           headerShown: false,
         }}>
         <Stack.Screen name="Tabs" component={Tabs} />
         <Stack.Screen
           name="ThemeSetting"
           component={ThemeSetting}
-          // options={{
-          //   gestureEnabled: false,
-          //   animation: 'slide_from_bottom',
-          //   animationDuration: 10,
-          // }}
+          options={
+            {
+              // gestureEnabled: false,
+              // animation: 'slide_from_right',
+            }
+          }
         />
       </Stack.Navigator>
       <ToastMessage />
