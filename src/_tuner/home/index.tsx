@@ -26,7 +26,7 @@ export default ({ navigation }: Props) => {
     });
 
     const sub = RecordingModule.addRecordingEventListener(data => {
-      // console.log('saul RRRRRRRRRRRRRRR', data);
+      console.log('saul RRRRRRRRRRRRRRR', data);
     });
     return () => {
       sub.remove();

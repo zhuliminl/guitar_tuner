@@ -148,4 +148,16 @@ class RecordingModule extends ReactContextBaseJavaModule {
             eventEmitter.emit("recording", data);
         }
     }
+
+    @ReactMethod
+    public void addListener(String eventName) {
+
+    }
+
+    @ReactMethod
+    public void removeListeners(Integer count) {
+
+    }
+
+
 }
