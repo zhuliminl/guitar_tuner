@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, View } from 'react-native';
-import { Theme } from '../../utils/Theme';
 import IconFont from '../iconFont';
+import { useThemeStyle } from '../../hooks/useTheme';
 
 export const Cell = ({
   title = '关于',
@@ -9,6 +9,7 @@ export const Cell = ({
   onPress = () => {},
   renderRight = undefined,
 }) => {
+  const Theme = useThemeStyle();
   return (
     <TouchableOpacity
       onPress={() => {
@@ -58,6 +59,7 @@ export const Cell = ({
 };
 
 export const CellGroup = ({ title = '', ...props }) => {
+  const Theme = useThemeStyle();
   return (
     <View
       style={{
@@ -69,7 +71,7 @@ export const CellGroup = ({ title = '', ...props }) => {
         marginLeft: Theme.sizePagePadding,
         marginRight: Theme.sizePagePadding,
         borderRadius: Theme.borderRadiusLarge,
-        backgroundColor: Theme.colorWhite,
+        backgroundColor: Theme.bgColorSecondary,
       }}>
       <Text
         style={{

@@ -1,7 +1,8 @@
 import { View, TouchableOpacity, Text } from 'react-native';
-import { Theme } from '../../utils/Theme';
+import { useThemeStyle } from '../../hooks/useTheme';
 
 export default ({ title = '标题', onPress = () => {} }) => {
+  const Theme = useThemeStyle();
   return (
     <View
       style={{

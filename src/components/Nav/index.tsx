@@ -1,11 +1,12 @@
 import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
-import { Theme } from '../../utils/Theme';
 import IconFont from '../iconFont';
 import { useNavigation } from '@react-navigation/native';
+import { useThemeStyle } from '../../hooks/useTheme';
 
 export const Nav = ({ title = '标题' }) => {
   const navigation = useNavigation();
+  const Theme = useThemeStyle();
   return (
     <View
       style={{

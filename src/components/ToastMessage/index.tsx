@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { View, Text, Animated, Easing } from 'react-native';
 import { create } from 'zustand';
-import { Theme } from '../../utils/Theme';
+import { useThemeStyle } from '../../hooks/useTheme';
 
 export enum ToastType {
   Info = 1,
@@ -63,6 +63,7 @@ export default () => {
   const isShow = useToastStore(state => state.isShow);
   const type = useToastStore(state => state.type);
   const message = useToastStore(state => state.message);
+  const Theme = useThemeStyle();
 
   useEffect(() => {
     if (isShow) {

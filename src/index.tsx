@@ -3,11 +3,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import Setting from './_mine/setting';
 import Tabs from './tabs';
-import { Theme } from './utils/Theme';
 import ToastMessage from './components/ToastMessage';
+import { useThemeStyle } from './hooks/useTheme';
 
 const Stack = createNativeStackNavigator();
 
+/*
 const config = {
   animation: 'spring',
   config: {
@@ -19,8 +20,10 @@ const config = {
     restSpeedThreshold: 0.01,
   },
 };
+*/
 
 export default () => {
+  const Theme = useThemeStyle();
   return (
     <NavigationContainer
       theme={{

@@ -5,7 +5,7 @@ import Jazz from '../_jazz/home';
 import Mine from '../_mine/home';
 import Tools from '../_tools/home';
 import Tuner from '../_tuner/home';
-import { Theme } from '../utils/Theme';
+import { useThemeStyle } from '../hooks/useTheme';
 
 export type RootStackParamList = {
   Tuner: undefined;
@@ -15,6 +15,7 @@ export type RootStackParamList = {
 };
 const Tab = createBottomTabNavigator<RootStackParamList>();
 export default () => {
+  const Theme = useThemeStyle();
   return (
     <Tab.Navigator
       screenOptions={{
@@ -28,7 +29,7 @@ export default () => {
           borderRadius: Theme.borderRadiusLarge,
           borderTopWidth: 0,
           height: Theme.sizeTabHeight,
-          backgroundColor: Theme.colorWhite,
+          backgroundColor: Theme.bgColorSecondary,
           elevation: 0,
           shadowOffset: { width: 0, height: -20 },
         },
@@ -75,6 +76,7 @@ export default () => {
 };
 
 const Icon = ({ label = '', focused = false }) => {
+  const Theme = useThemeStyle();
   return (
     <View
       style={{

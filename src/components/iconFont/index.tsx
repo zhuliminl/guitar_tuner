@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import Svg, { Path } from 'react-native-svg';
 import defaultSvgs from './svg';
-import { Theme } from '../../utils/Theme';
 import { ViewStyle } from 'react-native';
 
 export interface IProps {
@@ -51,7 +50,7 @@ const Index: FC<IProps> = ({
   height: _height = null,
   size = 24,
   name = null,
-  fill = Theme.colorInfo,
+  fill = '#EEE',
   d: _d = null,
 }) => {
   const width = _width || size;
