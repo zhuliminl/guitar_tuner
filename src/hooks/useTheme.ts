@@ -1,11 +1,10 @@
-import React from 'react';
 import { Dimensions } from 'react-native';
 import { create } from 'zustand';
 
 export enum ThemeType {
-  light = 'light',
-  dark = 'dark',
-  style1 = 'style1',
+  light = '默认',
+  dark = '暗黑',
+  style1 = '样式1',
 }
 
 interface ThemeState {
@@ -42,10 +41,18 @@ export const usePt = () => {
 };
 
 const scale = 4;
-export const useThemeStyle = () => {
+interface ThemeStyleOptions {
+  targetTheme: ThemeType;
+}
+export const useThemeStyle = (options?: ThemeStyleOptions) => {
   const $pt = usePt();
   const windowWidth = getWindowWidth();
-  const themeType = useThemeType();
+  let themeType = useThemeType();
+
+  if (options?.targetTheme) {
+    themeType = options.targetTheme;
+  }
+
   let style = {
     bgColorPrimary: '#EEE',
     bgColorSecondary: '#FFF',
@@ -56,6 +63,7 @@ export const useThemeStyle = () => {
     colorBrandSecond: '#8f432e',
     colorDivide: '#999',
     colorSuccess: 'red',
+    colorSafe: 'green',
     colorWarning: 'yellow',
     colorInfo: '#999',
     colorToastBg: '#222',
@@ -95,6 +103,17 @@ export const useThemeStyle = () => {
   if (themeType === ThemeType.dark) {
     style.bgColorPrimary = '#111';
     style.bgColorSecondary = '#333';
+
+    style.fontColorPrimary = '#FFF';
+    style.fontColorSecond = '#FFF';
+    style.fontColorTertiary = '#FFF';
+    style.fontColorQuaternary = '#FFF';
+    style.colorDivide = 'red';
+  }
+
+  if (themeType === ThemeType.style1) {
+    style.bgColorPrimary = 'red';
+    style.bgColorSecondary = 'green';
 
     style.fontColorPrimary = '#FFF';
     style.fontColorSecond = '#FFF';

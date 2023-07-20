@@ -1,10 +1,13 @@
+import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Cell, CellGroup } from '../../components/Cell';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { LargeTitle } from '../../components/LargeTitle';
+import { RootStackParamList } from '../../tabs';
 
-export default ({ navigation }: NativeStackNavigationProp) => {
+type Props = BottomTabScreenProps<RootStackParamList, 'Mine'>;
+
+export default ({ route, navigation }: Props) => {
   return (
     <View style={styles.container}>
       <LargeTitle title="我的页面" />
@@ -12,9 +15,9 @@ export default ({ navigation }: NativeStackNavigationProp) => {
         <Cell title="联系我们" desc="您可以通过一些方式等收到返赛" />
         <Cell title="关于萤石云" />
         <Cell
-          title="版本信息"
+          title="主题模式"
           onPress={() => {
-            navigation.push('Setting');
+            navigation.navigate('ThemeSetting');
           }}
         />
       </CellGroup>

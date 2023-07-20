@@ -8,11 +8,14 @@ import Tuner from '../_tuner/home';
 import { useThemeStyle } from '../hooks/useTheme';
 
 export type RootStackParamList = {
+  Tabs: undefined;
   Tuner: undefined;
   Tools: undefined;
   Jazz: undefined;
   Mine: undefined;
+  ThemeSetting: undefined;
 };
+
 const Tab = createBottomTabNavigator<RootStackParamList>();
 export default () => {
   const Theme = useThemeStyle();

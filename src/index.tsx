@@ -1,12 +1,13 @@
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import Setting from './_mine/setting';
+import ThemeSetting from './_mine/themeSetting';
 import Tabs from './tabs';
 import ToastMessage from './components/ToastMessage';
 import { useThemeStyle } from './hooks/useTheme';
+import { RootStackParamList } from './tabs';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 /*
 const config = {
@@ -34,13 +35,14 @@ export default () => {
         },
       }}>
       <Stack.Navigator
+        initialRouteName="Tabs"
         screenOptions={{
           headerShown: false,
         }}>
         <Stack.Screen name="Tabs" component={Tabs} />
         <Stack.Screen
-          name="Setting"
-          component={Setting}
+          name="ThemeSetting"
+          component={ThemeSetting}
           // options={{
           //   gestureEnabled: false,
           //   animation: 'slide_from_bottom',

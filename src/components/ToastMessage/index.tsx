@@ -136,7 +136,7 @@ export default () => {
         }}></View>
       <Text
         style={{
-          color: Theme.colorWhite,
+          color: '#FFF',
           fontSize: Theme.fontSizeDesc,
           flex: 1,
         }}>
