@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity, Text, View } from 'react-native';
 import IconFont from '../iconFont';
 import { useThemeStyle } from '../../hooks/useTheme';
+import { Shadow } from 'react-native-shadow-2';
 
 export const Cell = ({
   title = '关于',
@@ -61,28 +62,34 @@ export const Cell = ({
 export const CellGroup = ({ title = '', ...props }) => {
   const Theme = useThemeStyle();
   return (
-    <View
-      style={{
+    <Shadow
+      stretch={true}
+      startColor={Theme.shadowStyle2.startColor}
+      containerStyle={{
         marginTop: Theme.sizeCardPadding,
-        paddingBottom: Theme.sizeCardPadding,
-        paddingTop: Theme.sizeCardPadding,
-        paddingLeft: Theme.sizeCardPadding,
-        paddingRight: Theme.sizeCardPadding,
         marginLeft: Theme.sizePagePadding,
         marginRight: Theme.sizePagePadding,
-        borderRadius: Theme.borderRadiusLarge,
-        backgroundColor: Theme.bgColorSecondary,
       }}>
-      <Text
+      <View
         style={{
-          fontWeight: 'bold',
-          fontSize: Theme.fontSizeTitle,
-          color: Theme.fontColorPrimary,
-          marginBottom: Theme.sizeTitlePadding,
+          paddingBottom: Theme.sizeCardPadding,
+          paddingTop: Theme.sizeCardPadding,
+          paddingLeft: Theme.sizeCardPadding,
+          paddingRight: Theme.sizeCardPadding,
+          borderRadius: Theme.borderRadiusLarge,
+          backgroundColor: Theme.bgColorSecondary,
         }}>
-        {title}
-      </Text>
-      {props.children}
-    </View>
+        <Text
+          style={{
+            fontWeight: 'bold',
+            fontSize: Theme.fontSizeTitle,
+            color: Theme.fontColorPrimary,
+            marginBottom: Theme.sizeTitlePadding,
+          }}>
+          {title}
+        </Text>
+        {props.children}
+      </View>
+    </Shadow>
   );
 };

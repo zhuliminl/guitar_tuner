@@ -67,9 +67,15 @@ export const useThemeStyle = (options?: ThemeStyleOptions) => {
     colorWarning: 'yellow',
     colorInfo: '#999',
     colorToastBg: '#222',
-    shoadowStyle1: {},
-    showdowStyle2: {},
-    showdowStyle3: {},
+    shadowStyle1: {
+      startColor: '#00000010',
+    },
+    shadowStyle2: {
+      startColor: '#00000006',
+    },
+    shadowStyle3: {
+      startColor: '#00000004',
+    },
     fontColorPrimary: '#222',
     fontColorSecond: '#444',
     fontColorTertiary: '#666',

@@ -35,7 +35,7 @@ export default () => {
             }}>
             <Shadow
               stretch={true}
-              startColor={'#00000010'}
+              startColor={Theme.shadowStyle1.startColor}
               distance={12}
               containerStyle={{
                 position: 'absolute',

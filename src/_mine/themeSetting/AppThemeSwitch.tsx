@@ -24,7 +24,7 @@ export default () => {
       }}>
       {(Object.keys(ThemeType) as Array<keyof typeof ThemeType>).map(key => {
         const themeName = ThemeType[key];
-        const style = useThemeStyle({ targetTheme: themeName });
+        const targetTheme = useThemeStyle({ targetTheme: themeName });
         const isActive = themeName === themeType;
         return (
           <TouchableOpacity
@@ -34,17 +34,19 @@ export default () => {
               setTheme(themeName);
             }}
             style={{
-              // marginLeft: Theme.sizeCardPadding,
               paddingHorizontal: 10,
               alignContent: 'center',
             }}>
-            <Shadow offset={[0, 10]} distance={20}>
+            <Shadow
+              offset={[0, 10]}
+              distance={20}
+              startColor={Theme.shadowStyle1.startColor}>
               <View
                 style={{
                   borderRadius: Theme.borderRadiusLarge,
                   width: Theme.scale * 20,
                   height: Theme.scale * 38,
-                  backgroundColor: style.bgColorSecondary,
+                  backgroundColor: targetTheme.bgColorSecondary,
                   alignItems: 'center',
                 }}>
                 <View
@@ -54,7 +56,7 @@ export default () => {
                     borderRadius: Theme.borderRadiusSmall,
                     width: Theme.scale * 16,
                     height: Theme.scale * 4,
-                    backgroundColor: style.bgColorPrimary,
+                    backgroundColor: targetTheme.bgColorPrimary,
                   }}></View>
               </View>
             </Shadow>
