@@ -8,6 +8,7 @@ import Mine from '../_mine/home';
 import Tools from '../_tools/home';
 import Tuner from '../_tuner/home';
 import { useThemeStyle } from '../hooks/useTheme';
+import { categoryEnum } from '../utils/music/instruments';
 
 export type RootStackParamList = {
   Tabs: undefined;
@@ -16,6 +17,10 @@ export type RootStackParamList = {
   Jazz: undefined;
   Mine: undefined;
   ThemeSetting: undefined;
+  InstrumentsCate: undefined;
+  InstrumentsList: {
+    cateName: categoryEnum;
+  };
 };
 
 const Tab = createBottomTabNavigator<RootStackParamList>();

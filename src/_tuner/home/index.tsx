@@ -84,6 +84,12 @@ export default ({ navigation }: Props) => {
           });
         }}
       />
+      <FullButton
+        title="选择乐器"
+        onPress={() => {
+          navigation.navigate('InstrumentsCate');
+        }}
+      />
       <LargeTitle title={noteString} />
       <LargeTitle title={note} />
       <LargeTitle title={standFrequency} />

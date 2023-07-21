@@ -2,6 +2,8 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import ThemeSetting from './_mine/themeSetting';
+import InstrumentsCate from './_tuner/instruments_cate';
+import InstrumentsList from './_tuner/instruments_list';
 import Tabs from './tabs';
 import ToastMessage from './components/ToastMessage';
 import { useThemeStyle } from './hooks/useTheme';
@@ -38,21 +40,15 @@ export default () => {
         }}>
         <Stack.Navigator
           initialRouteName="Tabs"
+          // initialRouteName="InstrumentsCate"
           screenOptions={{
             contentStyle: {},
             headerShown: false,
           }}>
           <Stack.Screen name="Tabs" component={Tabs} />
-          <Stack.Screen
-            name="ThemeSetting"
-            component={ThemeSetting}
-            options={
-              {
-                // gestureEnabled: false,
-                // animation: 'slide_from_right',
-              }
-            }
-          />
+          <Stack.Screen name="ThemeSetting" component={ThemeSetting} />
+          <Stack.Screen name="InstrumentsCate" component={InstrumentsCate} />
+          <Stack.Screen name="InstrumentsList" component={InstrumentsList} />
         </Stack.Navigator>
         <ToastMessage />
       </NavigationContainer>

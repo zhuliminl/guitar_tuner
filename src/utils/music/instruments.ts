@@ -1,7 +1,7 @@
 // 乐器数据
 
 // 总类别
-enum categoryEnum {
+export enum categoryEnum {
   '吉他' = '吉他',
   '贝斯' = '贝斯',
   '尤克里里' = '尤克里里',
@@ -14,7 +14,7 @@ enum categoryEnum {
 }
 
 // 子类别
-enum subCategoryEnum {
+export enum subCategoryEnum {
   '吉他6弦' = '吉他6弦',
   '吉他7弦' = '吉他7弦',
   '吉他12弦' = '吉他12弦',
@@ -29,7 +29,7 @@ enum subCategoryEnum {
   '曼陀林琴' = '曼陀林琴',
 }
 
-interface InstrumentInterface {
+export interface InstrumentInterface {
   category: categoryEnum;
   subCategory: subCategoryEnum;
   label: string;
