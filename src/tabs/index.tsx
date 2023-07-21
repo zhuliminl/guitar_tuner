@@ -1,6 +1,8 @@
-import { View, Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { CommonActions } from '@react-navigation/native';
 import React from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { Shadow } from 'react-native-shadow-2';
 import Jazz from '../_jazz/home';
 import Mine from '../_mine/home';
 import Tools from '../_tools/home';
@@ -19,69 +21,77 @@ export type RootStackParamList = {
 const Tab = createBottomTabNavigator<RootStackParamList>();
 export default () => {
   const Theme = useThemeStyle();
+  const tabHeight = Theme.sizeTabHeight;
+  const tabWidth = Theme.windowWidth - 20;
   return (
     <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarShowLabel: false,
-        tabBarStyle: {
-          position: 'absolute',
-          bottom: 10,
-          left: 10,
-          right: 10,
-          borderRadius: Theme.borderRadiusLarge,
-          borderTopWidth: 0,
-          height: Theme.sizeTabHeight,
-          backgroundColor: Theme.bgColorSecondary,
-          elevation: 0,
-          shadowOffset: { width: 0, height: -20 },
-        },
-        tabBarItemStyle: {},
+      screenOptions={{ headerShown: false }}
+      tabBar={props => {
+        return (
+          <View
+            style={{
+              width: Theme.windowWidth,
+              height: tabHeight,
+            }}>
+            <Shadow
+              stretch={true}
+              startColor={'#00000010'}
+              distance={12}
+              containerStyle={{
+                position: 'absolute',
+                bottom: 10,
+                left: 10,
+                right: 10,
+                height: tabHeight,
+                width: tabWidth,
+              }}
+              style={{
+                width: tabWidth,
+                height: tabHeight,
+              }}>
+              <View
+                style={{
+                  height: tabWidth,
+                  borderRadius: Theme.borderRadiusLarge,
+                  flexDirection: 'row',
+                  flex: 1,
+                }}>
+                {props.state.routeNames.map((routeName, i) => {
+                  const focused = props.state.index === i;
+                  return (
+                    <Icon
+                      key={routeName}
+                      label={routeName}
+                      focused={focused}
+                      onPress={() => {
+                        props.navigation.dispatch({
+                          ...CommonActions.navigate(routeName),
+                          target: props.state.key,
+                        });
+                      }}
+                    />
+                  );
+                })}
+              </View>
+            </Shadow>
+          </View>
+        );
       }}>
-      <Tab.Screen
-        name="Tuner"
-        component={Tuner}
-        options={{
-          tabBarIcon: ({ ...props }) => {
-            return <Icon label="调音" {...props} />;
-          },
-        }}
-      />
-      <Tab.Screen
-        name="Tools"
-        component={Tools}
-        options={{
-          tabBarIcon: ({ ...props }) => {
-            return <Icon label="工具" {...props} />;
-          },
-        }}
-      />
-      <Tab.Screen
-        name="Jazz"
-        component={Jazz}
-        options={{
-          tabBarIcon: ({ ...props }) => {
-            return <Icon label="爵士" {...props} />;
-          },
-        }}
-      />
-      <Tab.Screen
-        name="Mine"
-        component={Mine}
-        options={{
-          tabBarIcon: ({ ...props }) => {
-            return <Icon label="我的" {...props} />;
-          },
-        }}
-      />
+      <Tab.Screen name="Tuner" component={Tuner} />
+      <Tab.Screen name="Tools" component={Tools} />
+      <Tab.Screen name="Jazz" component={Jazz} />
+      <Tab.Screen name="Mine" component={Mine} />
     </Tab.Navigator>
   );
 };
 
-const Icon = ({ label = '', focused = false }) => {
+const Icon = ({ label = '', focused = false, onPress = () => {} }) => {
   const Theme = useThemeStyle();
   return (
-    <View
+    <TouchableOpacity
+      onPress={() => {
+        onPress();
+      }}
       style={{
         width: '100%',
         flex: 1,
@@ -95,6 +105,6 @@ const Icon = ({ label = '', focused = false }) => {
         }}>
         {label}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 };

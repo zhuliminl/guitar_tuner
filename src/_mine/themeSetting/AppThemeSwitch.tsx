@@ -7,6 +7,7 @@ import {
   useThemeType,
 } from '../../hooks/useTheme';
 import Check from '../../components/Check';
+import { Shadow } from 'react-native-shadow-2';
 
 export default () => {
   const Theme = useThemeStyle();
@@ -37,24 +38,26 @@ export default () => {
               paddingHorizontal: 10,
               alignContent: 'center',
             }}>
-            <View
-              style={{
-                borderRadius: Theme.borderRadiusLarge,
-                width: Theme.scale * 20,
-                height: Theme.scale * 38,
-                backgroundColor: style.bgColorSecondary,
-                alignItems: 'center',
-              }}>
+            <Shadow offset={[0, 10]} distance={20}>
               <View
                 style={{
-                  position: 'absolute',
-                  bottom: Theme.scale * 2,
-                  borderRadius: Theme.borderRadiusSmall,
-                  width: Theme.scale * 16,
-                  height: Theme.scale * 4,
-                  backgroundColor: style.bgColorPrimary,
-                }}></View>
-            </View>
+                  borderRadius: Theme.borderRadiusLarge,
+                  width: Theme.scale * 20,
+                  height: Theme.scale * 38,
+                  backgroundColor: style.bgColorSecondary,
+                  alignItems: 'center',
+                }}>
+                <View
+                  style={{
+                    position: 'absolute',
+                    bottom: Theme.scale * 2,
+                    borderRadius: Theme.borderRadiusSmall,
+                    width: Theme.scale * 16,
+                    height: Theme.scale * 4,
+                    backgroundColor: style.bgColorPrimary,
+                  }}></View>
+              </View>
+            </Shadow>
             <Text
               style={{
                 marginTop: Theme.sizeTextPadding,

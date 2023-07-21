@@ -7,7 +7,6 @@ import ToastMessage from './components/ToastMessage';
 import { useThemeStyle } from './hooks/useTheme';
 import { RootStackParamList } from './tabs';
 import AppearanceHost from './contexts/appearance';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
