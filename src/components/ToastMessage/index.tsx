@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { View, Text, Animated, Easing } from 'react-native';
 import { create } from 'zustand';
 import { useThemeStyle } from '../../hooks/useTheme';
+import { Shadow } from 'react-native-shadow-2';
 
 export enum ToastType {
   Info = 1,
@@ -81,7 +82,7 @@ export default () => {
 
   const tY = value.interpolate({
     inputRange: [0, 1],
-    outputRange: [-Theme.sizeToastHeight, 20],
+    outputRange: [-Theme.sizeToastHeight - 20, 20],
   });
 
   let iconColor = '#999';
@@ -104,44 +105,53 @@ export default () => {
   return (
     <Animated.View
       style={{
-        paddingRight: 10,
         position: 'absolute',
         top: 0,
-        left: 10,
-        right: 10,
-        height: Theme.sizeToastHeight,
-        backgroundColor: Theme.colorToastBg,
-        borderRadius: Theme.borderRadiusLarge,
-        flexDirection: 'row',
-        overflow: 'hidden',
-        alignItems: 'center',
-        elevation: 10,
-        shadowOffset: { width: 0, height: 20 },
+        left: 0,
+        right: 0,
+        height: Theme.sizeToastHeight + 30,
         transform: [
           {
             translateY: tY,
           },
         ],
       }}>
-      {/* 类型 */}
-      {/* 内容 */}
-      {/* 关闭 */}
-      <View
-        style={{
+      <Shadow
+        startColor={'#00000030'}
+        distance={15}
+        containerStyle={{
           marginLeft: 10,
-          marginRight: 10,
-          width: 20,
-          height: 20,
-          backgroundColor: iconColor,
-        }}></View>
-      <Text
+          borderRadius: Theme.borderRadiusLarge,
+          backgroundColor: Theme.colorToastBg,
+          width: Theme.windowWidth - 20,
+        }}
         style={{
-          color: '#FFF',
-          fontSize: Theme.fontSizeDesc,
-          flex: 1,
+          borderRadius: Theme.borderRadiusLarge,
+          height: Theme.sizeToastHeight,
+          overflow: 'hidden',
+          alignItems: 'center',
+          flexDirection: 'row',
         }}>
-        {message}
-      </Text>
+        {/* 类型 */}
+        {/* 内容 */}
+        {/* 关闭 */}
+        <View
+          style={{
+            marginLeft: 10,
+            marginRight: 10,
+            width: 20,
+            height: 20,
+            backgroundColor: iconColor,
+          }}></View>
+        <Text
+          style={{
+            color: '#FFF',
+            fontSize: Theme.fontSizeDesc,
+            flex: 1,
+          }}>
+          {message}
+        </Text>
+      </Shadow>
     </Animated.View>
   );
 };
