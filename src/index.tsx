@@ -1,15 +1,15 @@
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
+import { Platform } from 'react-native';
+import AccountSafe from './_mine/account_safe';
 import ThemeSetting from './_mine/themeSetting';
 import InstrumentsCate from './_tuner/instruments_cate';
 import InstrumentsList from './_tuner/instruments_list';
-import AccountSafe from './_mine/account_safe';
-import Tabs from './tabs';
 import ToastMessage from './components/ToastMessage';
-import { useThemeStyle } from './hooks/useTheme';
-import { RootStackParamList } from './tabs';
 import AppearanceHost from './contexts/appearance';
+import { useThemeStyle } from './hooks/useTheme';
+import Tabs, { RootStackParamList } from './tabs';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -29,16 +29,10 @@ const config = {
 
 export default () => {
   const Theme = useThemeStyle();
+  const MyTheme = { colors: { background: Theme.bgColorPrimary } };
   return (
     <AppearanceHost>
-      <NavigationContainer
-        theme={{
-          ...DefaultTheme,
-          colors: {
-            ...DefaultTheme.colors,
-            background: Theme.bgColorPrimary,
-          },
-        }}>
+      <NavigationContainer theme={MyTheme as typeof DefaultTheme}>
         <Stack.Navigator
           initialRouteName="Tabs"
           // initialRouteName="AccountSafe"
@@ -46,6 +40,9 @@ export default () => {
           screenOptions={{
             contentStyle: {},
             headerShown: false,
+            ...(Platform.OS === 'android' && {
+              animation: 'slide_from_right',
+            }),
           }}>
           <Stack.Screen name="Tabs" component={Tabs} />
           <Stack.Screen name="ThemeSetting" component={ThemeSetting} />
