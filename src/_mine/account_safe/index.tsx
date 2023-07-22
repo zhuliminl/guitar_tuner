@@ -15,8 +15,9 @@ export default ({ route, navigation }: Props) => {
     <SafeAreaView style={styles.container}>
       <Nav title="账号与安全" />
       <ScrollView>
-        <CellGroup>
+        <CellGroup title="">
           <Cell title={'手机'} onPress={() => {}} />
+          <Cell title={'微信'} onPress={() => {}} />
         </CellGroup>
         <CellGroup>
           <Cell title={'邮箱'} onPress={() => {}} />

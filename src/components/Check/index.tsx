@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { useThemeStyle } from '../../hooks/useTheme';
+import { useScaleTouch } from '../../hooks/useScaleTouch';
 
 export default ({ style = {}, isActive = false, onPress = () => {} }) => {
   const Theme = useThemeStyle();

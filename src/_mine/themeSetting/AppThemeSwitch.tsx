@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  Animated,
+} from 'react-native';
 import {
   ThemeType,
   useSetTheme,
@@ -8,6 +14,7 @@ import {
 } from '../../hooks/useTheme';
 import Check from '../../components/Check';
 import { Shadow } from 'react-native-shadow-2';
+import { useScaleTouch } from '../../hooks/useScaleTouch';
 
 export default () => {
   const Theme = useThemeStyle();
@@ -26,8 +33,10 @@ export default () => {
         const themeName = ThemeType[key];
         const targetTheme = useThemeStyle({ targetTheme: themeName });
         const isActive = themeName === themeType;
+        const { scaleValue, ...touchEvents } = useScaleTouch();
         return (
           <TouchableOpacity
+            {...touchEvents}
             activeOpacity={0.7}
             key={key}
             onPress={() => {
@@ -37,29 +46,38 @@ export default () => {
               paddingHorizontal: 10,
               alignContent: 'center',
             }}>
-            <Shadow
-              offset={[0, 10]}
-              distance={20}
-              startColor={Theme.shadowStyle1.startColor}>
-              <View
-                style={{
-                  borderRadius: Theme.borderRadiusLarge,
-                  width: Theme.scale * 20,
-                  height: Theme.scale * 38,
-                  backgroundColor: targetTheme.bgColorSecondary,
-                  alignItems: 'center',
-                }}>
+            <Animated.View
+              style={{
+                transform: [
+                  {
+                    scale: scaleValue,
+                  },
+                ],
+              }}>
+              <Shadow
+                offset={[0, 10]}
+                distance={20}
+                startColor={Theme.shadowStyle1.startColor}>
                 <View
                   style={{
-                    position: 'absolute',
-                    bottom: Theme.scale * 2,
-                    borderRadius: Theme.borderRadiusSmall,
-                    width: Theme.scale * 16,
-                    height: Theme.scale * 4,
-                    backgroundColor: targetTheme.bgColorPrimary,
-                  }}></View>
-              </View>
-            </Shadow>
+                    borderRadius: Theme.borderRadiusLarge,
+                    width: Theme.scale * 20,
+                    height: Theme.scale * 38,
+                    backgroundColor: targetTheme.bgColorSecondary,
+                    alignItems: 'center',
+                  }}>
+                  <View
+                    style={{
+                      position: 'absolute',
+                      bottom: Theme.scale * 2,
+                      borderRadius: Theme.borderRadiusSmall,
+                      width: Theme.scale * 16,
+                      height: Theme.scale * 4,
+                      backgroundColor: targetTheme.bgColorPrimary,
+                    }}></View>
+                </View>
+              </Shadow>
+            </Animated.View>
             <Text
               style={{
                 marginTop: Theme.sizeTextPadding,

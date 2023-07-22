@@ -1,5 +1,12 @@
 import React from 'react';
-import { TouchableOpacity, Text, View, TouchableHighlight } from 'react-native';
+import {
+  TouchableOpacity,
+  Text,
+  View,
+  TouchableHighlight,
+  Animated,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import IconFont from '../iconFont';
 import { useThemeStyle } from '../../hooks/useTheme';
 import { Shadow } from 'react-native-shadow-2';
@@ -10,9 +17,10 @@ export const Cell = ({
   desc = '',
   onPress = () => {},
   renderRight = undefined,
+  ...props
 }) => {
   const Theme = useThemeStyle();
-  const { onLongPress, onPressOut, scaleValue } = useScaleTouch();
+  const { onLongPress, onPressOut } = props;
   return (
     <TouchableHighlight
       onLongPress={() => {
@@ -77,6 +85,18 @@ export const Cell = ({
 
 export const CellGroup = ({ title = '', ...props }) => {
   const Theme = useThemeStyle();
+  const { onLongPress, onPressOut, scaleValue } = useScaleTouch();
+
+  // 牛逼的操作
+  const renderChildren = () => {
+    return React.Children.map(props.children, child => {
+      return React.cloneElement(child, {
+        onLongPress,
+        onPressOut,
+      });
+    });
+  };
+
   return (
     <View
       style={{
@@ -96,18 +116,27 @@ export const CellGroup = ({ title = '', ...props }) => {
           {title}
         </Text>
       )}
-      <Shadow
-        stretch={true}
-        startColor={Theme.shadowStyle2.startColor}
+      <Animated.View
         style={{
-          borderRadius: Theme.borderRadiusLarge,
-          backgroundColor: Theme.bgColorSecondary,
-          paddingVertical: Theme.borderRadiusLarge / 2,
-          overflow: 'hidden',
-        }}
-        containerStyle={{}}>
-        {props.children}
-      </Shadow>
+          transform: [
+            {
+              scale: scaleValue,
+            },
+          ],
+        }}>
+        <Shadow
+          stretch={true}
+          startColor={Theme.shadowStyle2.startColor}
+          style={{
+            borderRadius: Theme.borderRadiusLarge,
+            backgroundColor: Theme.bgColorSecondary,
+            paddingVertical: Theme.borderRadiusLarge / 2,
+            overflow: 'hidden',
+          }}
+          containerStyle={{}}>
+          <View>{renderChildren()}</View>
+        </Shadow>
+      </Animated.View>
     </View>
   );
 };

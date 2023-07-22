@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Animated } from 'react-native';
 
+const minScale = 0.95;
 export const useScaleTouch = () => {
   const [isLongPress, setIsLongPress] = useState(false);
-  const value = useRef(new Animated.Value(0)).current;
+  const value = useRef(new Animated.Value(minScale - 0.2)).current;
 
   useEffect(() => {
     if (isLongPress) {
       Animated.spring(value, {
-        toValue: 2,
+        toValue: minScale,
         useNativeDriver: true,
       }).start();
     } else {
