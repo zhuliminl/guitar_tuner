@@ -42,15 +42,10 @@ export default ({ route, navigation }: Props) => {
           <View
             style={{
               width: Theme.windowWidth,
-              height: 1,
-              backgroundColor: Theme.colorDivide,
+              // height: 1,
+              // backgroundColor: Theme.colorDivide,
             }}></View>
         )}
-        // SectionSeparatorComponent={() => (
-        //   <View>
-        //     <Text>jj</Text>
-        //   </View>
-        // )}
         stickySectionHeadersEnabled={true}
         renderSectionHeader={({ section: { cateTitle } }) => (
           <View
