@@ -33,6 +33,24 @@ export default ({ route, navigation }: Props) => {
             },
           )}
         </CellGroup>
+        <CellGroup title="选择您的乐器种类">
+          {(Object.keys(categoryEnum) as Array<keyof typeof categoryEnum>).map(
+            key => {
+              const cateName = categoryEnum[key];
+              return (
+                <Cell
+                  key={cateName}
+                  title={cateName}
+                  onPress={() => {
+                    navigation.navigate('InstrumentsList', {
+                      cateName,
+                    });
+                  }}
+                />
+              );
+            },
+          )}
+        </CellGroup>
       </ScrollView>
     </SafeAreaView>
   );

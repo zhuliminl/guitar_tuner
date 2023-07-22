@@ -60,7 +60,7 @@ export default ({ navigation }: Props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <LargeTitle title={'调音器'} />
+      {/* <LargeTitle title={'调音器'} /> */}
       <FullButton
         title="获取录音权限"
         onPress={() => {

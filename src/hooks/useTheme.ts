@@ -54,14 +54,17 @@ export const useThemeStyle = (options?: ThemeStyleOptions) => {
   }
 
   let style = {
-    bgColorPrimary: '#F5F6F7',
+    bgColorPrimary: '#FAFAFA',
     bgColorSecondary: '#FFF',
+    bgColorTertiary: '#EEE',
 
     scale,
     windowWidth,
     colorBrand: '#8f432e',
     colorBrandSecond: '#8f432e',
-    colorDivide: '#999',
+    colorIcon: '#C8C8C8',
+    colorBorder: '#999',
+    colorDivide: '#EEE',
     colorSuccess: 'red',
     colorSafe: '#22c45c',
     colorWarning: 'yellow',
@@ -93,11 +96,11 @@ export const useThemeStyle = (options?: ThemeStyleOptions) => {
     borderRadiusUltra: scale * 4,
     sizeToastHeight: scale * 12,
     sizeTabHeight: scale * 16,
-    sizeCellHeight: scale * 11,
-    sizeHeaderHeight: scale * 12,
+    sizeCellHeight: scale * 12,
+    sizeHeaderHeight: scale * 14,
     sizeIconSmallHeight: scale * 4,
     sizeIconMiddleHeight: scale * 6,
-    sizePagePadding: scale * 4,
+    sizePagePadding: scale * 6,
     sizeCardPadding: scale * 4,
     sizeTitlePadding: scale * 2,
     sizeTagPadding: scale * 1,
@@ -109,23 +112,25 @@ export const useThemeStyle = (options?: ThemeStyleOptions) => {
   if (themeType === ThemeType.dark) {
     style.bgColorPrimary = '#111';
     style.bgColorSecondary = '#333';
+    style.bgColorTertiary = '#444';
 
     style.fontColorPrimary = '#FFF';
     style.fontColorSecond = '#EEE';
     style.fontColorTertiary = '#DDD';
     style.fontColorQuaternary = '#AAA';
-    style.colorDivide = '#666';
+    style.colorDivide = '#444';
   }
 
   if (themeType === ThemeType.style1) {
     style.bgColorPrimary = '#222';
     style.bgColorSecondary = '#444';
+    style.bgColorTertiary = '#555';
 
     style.fontColorPrimary = '#FFF';
     style.fontColorSecond = '#EEE';
     style.fontColorTertiary = '#DDD';
     style.fontColorQuaternary = '#AAA';
-    style.colorDivide = '#666';
+    style.colorDivide = '#555';
   }
 
   return style;

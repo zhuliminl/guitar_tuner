@@ -21,6 +21,7 @@ export type RootStackParamList = {
   InstrumentsList: {
     cateName: categoryEnum;
   };
+  AccountSafe: undefined;
 };
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
@@ -60,6 +61,7 @@ export default () => {
                   borderRadius: Theme.borderRadiusLarge,
                   flexDirection: 'row',
                   flex: 1,
+                  backgroundColor: Theme.bgColorSecondary,
                 }}>
                 {props.state.routeNames.map((routeName, i) => {
                   const focused = props.state.index === i;

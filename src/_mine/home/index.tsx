@@ -11,7 +11,7 @@ type Props = BottomTabScreenProps<RootStackParamList, 'Mine'>;
 export default ({ route, navigation }: Props) => {
   return (
     <SafeAreaView style={styles.container}>
-      <LargeTitle title="我的页面" />
+      {/* <LargeTitle title="我的页面" /> */}
       <CellGroup title="设置">
         <Cell title="联系我们" desc="您可以通过一些方式等收到返赛" />
         <Cell title="关于萤石云" />
@@ -19,6 +19,18 @@ export default ({ route, navigation }: Props) => {
           title="主题模式"
           onPress={() => {
             navigation.navigate('ThemeSetting');
+          }}
+        />
+        <Cell
+          title="账号与安全"
+          onPress={() => {
+            navigation.navigate('AccountSafe');
+          }}
+        />
+        <Cell
+          title="选择乐器"
+          onPress={() => {
+            navigation.navigate('InstrumentsCate');
           }}
         />
       </CellGroup>

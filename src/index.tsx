@@ -4,6 +4,7 @@ import React from 'react';
 import ThemeSetting from './_mine/themeSetting';
 import InstrumentsCate from './_tuner/instruments_cate';
 import InstrumentsList from './_tuner/instruments_list';
+import AccountSafe from './_mine/account_safe';
 import Tabs from './tabs';
 import ToastMessage from './components/ToastMessage';
 import { useThemeStyle } from './hooks/useTheme';
@@ -40,6 +41,7 @@ export default () => {
         }}>
         <Stack.Navigator
           initialRouteName="Tabs"
+          // initialRouteName="AccountSafe"
           // initialRouteName="InstrumentsCate"
           screenOptions={{
             contentStyle: {},
@@ -49,6 +51,7 @@ export default () => {
           <Stack.Screen name="ThemeSetting" component={ThemeSetting} />
           <Stack.Screen name="InstrumentsCate" component={InstrumentsCate} />
           <Stack.Screen name="InstrumentsList" component={InstrumentsList} />
+          <Stack.Screen name="AccountSafe" component={AccountSafe} />
         </Stack.Navigator>
         <ToastMessage />
       </NavigationContainer>

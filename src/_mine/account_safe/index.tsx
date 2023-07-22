@@ -8,23 +8,28 @@ import { CellGroup, Cell } from '../../components/Cell';
 import { ThemeType } from '../../hooks/useTheme';
 import { categoryEnum } from '../../utils/music/instruments';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'InstrumentsList'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'AccountSafe'>;
 
 export default ({ route, navigation }: Props) => {
-  const { cateName } = route.params;
   return (
     <SafeAreaView style={styles.container}>
-      <Nav title={cateName} />
+      <Nav title="账号与安全" />
       <ScrollView>
-        <CellGroup title="选择您的指定乐器">
-          {(Object.keys(categoryEnum) as Array<keyof typeof categoryEnum>).map(
-            key => {
-              const cateName = categoryEnum[key];
-              return (
-                <Cell key={cateName} title={cateName} onPress={() => {}} />
-              );
-            },
-          )}
+        <CellGroup>
+          <Cell title={'手机'} onPress={() => {}} />
+        </CellGroup>
+        <CellGroup>
+          <Cell title={'邮箱'} onPress={() => {}} />
+        </CellGroup>
+        <CellGroup title="第三方登录">
+          <Cell title={'微信'} onPress={() => {}} />
+          <Cell title={'Apple'} onPress={() => {}} />
+          <Cell title={'QQ'} onPress={() => {}} />
+          <Cell title={'Facebook'} onPress={() => {}} />
+          <Cell title={'微博'} onPress={() => {}} />
+        </CellGroup>
+        <CellGroup>
+          <Cell title={'修改密码'} onPress={() => {}} />
         </CellGroup>
       </ScrollView>
     </SafeAreaView>

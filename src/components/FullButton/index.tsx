@@ -15,7 +15,7 @@ export default ({ title = '标题', onPress = () => {} }) => {
       <TouchableOpacity
         style={{
           borderWidth: 0.5,
-          borderColor: Theme.colorDivide,
+          borderColor: Theme.colorBorder,
           width: Theme.sizeFullButtonWidth,
           height: Theme.sizeFullButtonHeight,
           justifyContent: 'center',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text, View } from 'react-native';
+import { TouchableOpacity, Text, View, TouchableHighlight } from 'react-native';
 import IconFont from '../iconFont';
 import { useThemeStyle } from '../../hooks/useTheme';
 import { Shadow } from 'react-native-shadow-2';
@@ -12,84 +12,93 @@ export const Cell = ({
 }) => {
   const Theme = useThemeStyle();
   return (
-    <TouchableOpacity
+    <TouchableHighlight
+      activeOpacity={0.7}
+      underlayColor={Theme.bgColorTertiary}
       onPress={() => {
         onPress();
       }}
-      style={{
-        height: Theme.sizeCellHeight,
-        flexDirection: 'row',
-        alignContent: 'center',
-        justifyContent: 'center',
-      }}>
-      <View
-        style={{
-          height: '100%',
-          flex: 1,
-          alignContent: 'center',
-          justifyContent: 'center',
-        }}>
-        <Text
-          style={{
-            fontSize: Theme.fontSizeDefault,
-            color: Theme.fontColorPrimary,
-          }}>
-          {title}
-        </Text>
-        {!!desc && (
-          <Text
-            style={{
-              marginTop: Theme.sizeTextPadding,
-              fontSize: Theme.fontSizeDesc,
-              color: Theme.fontColorTertiary,
-            }}>
-            {desc}
-          </Text>
-        )}
-      </View>
+      style={{}}>
       <View
         style={{
           height: Theme.sizeCellHeight,
-          justifyContent: 'center',
-          alignItems: 'center',
+          flexDirection: 'row',
+          paddingHorizontal: Theme.sizeCardPadding,
         }}>
-        <IconFont name="smallArrow_r" size={24} fill={'#999'} />
+        <View
+          style={{
+            flex: 1,
+            alignContent: 'center',
+            justifyContent: 'center',
+          }}>
+          {/* 大标题 */}
+          <Text
+            style={{
+              fontSize: Theme.fontSizeDefault,
+              fontWeight: 'bold',
+              color: Theme.fontColorPrimary,
+            }}>
+            {title}
+          </Text>
+          {/* 描述 */}
+          {!!desc && (
+            <Text
+              style={{
+                marginTop: Theme.sizeTextPadding,
+                fontSize: Theme.fontSizeDesc,
+                color: Theme.fontColorTertiary,
+              }}>
+              {desc}
+            </Text>
+          )}
+        </View>
+        {/* 箭头 */}
+        <View
+          style={{
+            height: Theme.sizeCellHeight,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <IconFont name="smallArrow_r" size={24} fill={Theme.colorIcon} />
+        </View>
       </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 
 export const CellGroup = ({ title = '', ...props }) => {
   const Theme = useThemeStyle();
   return (
-    <Shadow
-      stretch={true}
-      startColor={Theme.shadowStyle2.startColor}
-      containerStyle={{
+    <View
+      style={{
         marginTop: Theme.sizeCardPadding,
-        marginLeft: Theme.sizePagePadding,
-        marginRight: Theme.sizePagePadding,
+        marginBottom: Theme.sizeCardPadding,
+        width: Theme.windowWidth,
+        paddingHorizontal: Theme.sizePagePadding,
       }}>
-      <View
-        style={{
-          paddingBottom: Theme.sizeCardPadding,
-          paddingTop: Theme.sizeCardPadding,
-          paddingLeft: Theme.sizeCardPadding,
-          paddingRight: Theme.sizeCardPadding,
-          borderRadius: Theme.borderRadiusLarge,
-          backgroundColor: Theme.bgColorSecondary,
-        }}>
+      {!!title && (
         <Text
           style={{
-            fontWeight: 'bold',
-            fontSize: Theme.fontSizeTitle,
-            color: Theme.fontColorPrimary,
+            marginLeft: Theme.sizeCardPadding,
+            fontSize: Theme.fontSizeDesc,
+            color: Theme.fontColorTertiary,
             marginBottom: Theme.sizeTitlePadding,
           }}>
           {title}
         </Text>
+      )}
+      <Shadow
+        stretch={true}
+        startColor={Theme.shadowStyle2.startColor}
+        style={{
+          borderRadius: Theme.borderRadiusLarge,
+          backgroundColor: Theme.bgColorSecondary,
+          paddingVertical: Theme.borderRadiusLarge / 2,
+          overflow: 'hidden',
+        }}
+        containerStyle={{}}>
         {props.children}
-      </View>
-    </Shadow>
+      </Shadow>
+    </View>
   );
 };
