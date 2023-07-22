@@ -37,6 +37,7 @@ export default () => {
           initialRouteName="Tabs"
           // initialRouteName="AccountSafe"
           // initialRouteName="InstrumentsCate"
+          // initialRouteName="InstrumentsList"
           screenOptions={{
             contentStyle: {},
             headerShown: false,

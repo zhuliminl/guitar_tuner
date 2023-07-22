@@ -118,7 +118,7 @@ export const useThemeStyle = (options?: ThemeStyleOptions) => {
     style.fontColorSecond = '#EEE';
     style.fontColorTertiary = '#DDD';
     style.fontColorQuaternary = '#AAA';
-    style.colorDivide = '#444';
+    style.colorDivide = '#222';
   }
 
   if (themeType === ThemeType.style1) {
@@ -130,7 +130,7 @@ export const useThemeStyle = (options?: ThemeStyleOptions) => {
     style.fontColorSecond = '#EEE';
     style.fontColorTertiary = '#DDD';
     style.fontColorQuaternary = '#AAA';
-    style.colorDivide = '#555';
+    style.colorDivide = '#333';
   }
 
   return style;
