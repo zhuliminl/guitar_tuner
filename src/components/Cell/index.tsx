@@ -130,7 +130,7 @@ export const CellGroup = ({ title = '', ...props }) => {
           style={{
             borderRadius: Theme.borderRadiusLarge,
             backgroundColor: Theme.bgColorSecondary,
-            paddingVertical: Theme.borderRadiusLarge / 2,
+            // paddingVertical: Theme.borderRadiusLarge / 2,
             overflow: 'hidden',
           }}
           containerStyle={{}}>

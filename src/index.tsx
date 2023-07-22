@@ -8,7 +8,7 @@ import InstrumentsCate from './_tuner/instruments_cate';
 import InstrumentsList from './_tuner/instruments_list';
 import ToastMessage from './components/ToastMessage';
 import AppearanceHost from './contexts/appearance';
-import { useThemeStyle } from './hooks/useTheme';
+import { ThemeType, useThemeStyle, useThemeType } from './hooks/useTheme';
 import Tabs, { RootStackParamList } from './tabs';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -29,6 +29,7 @@ const config = {
 
 export default () => {
   const Theme = useThemeStyle();
+  const themeType = useThemeType();
   const MyTheme = { colors: { background: Theme.bgColorPrimary } };
   return (
     <AppearanceHost>
@@ -41,9 +42,10 @@ export default () => {
           screenOptions={{
             contentStyle: {},
             headerShown: false,
-            ...(Platform.OS === 'android' && {
-              animation: 'slide_from_right',
-            }),
+            ...(Platform.OS === 'android' &&
+              themeType !== ThemeType.light && {
+                animation: 'slide_from_right',
+              }),
           }}>
           <Stack.Screen name="Tabs" component={Tabs} />
           <Stack.Screen name="ThemeSetting" component={ThemeSetting} />
