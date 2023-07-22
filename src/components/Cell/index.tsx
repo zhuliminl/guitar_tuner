@@ -23,7 +23,7 @@ export const Cell = ({
         style={{
           height: Theme.sizeCellHeight,
           flexDirection: 'row',
-          paddingHorizontal: Theme.sizeCardPadding,
+          paddingLeft: Theme.sizeCardPadding,
         }}>
         <View
           style={{
@@ -58,6 +58,7 @@ export const Cell = ({
             height: Theme.sizeCellHeight,
             justifyContent: 'center',
             alignItems: 'center',
+            marginRight: Theme.sizeCardPadding,
           }}>
           <IconFont name="smallArrow_r" size={24} fill={Theme.colorIcon} />
         </View>
