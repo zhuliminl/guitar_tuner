@@ -1,18 +1,23 @@
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text, Animated } from 'react-native';
 import { useThemeStyle } from '../../hooks/useTheme';
+import { useScaleTouch } from '../../hooks/useScaleTouch';
 
 export default ({ title = '标题', onPress = () => {} }) => {
   const Theme = useThemeStyle();
+  const { scaleValue, onPressOut, onLongPress } = useScaleTouch();
   return (
-    <View
+    <Animated.View
       style={{
         marginTop: Theme.sizeCardPadding,
         width: Theme.windowWidth,
         height: Theme.sizeFullButtonHeight,
         justifyContent: 'center',
         alignItems: 'center',
+        transform: [{ scale: scaleValue }],
       }}>
       <TouchableOpacity
+        onPressOut={onPressOut}
+        onLongPress={onLongPress}
         style={{
           borderWidth: 0.5,
           borderColor: Theme.colorBorder,
@@ -34,6 +39,6 @@ export default ({ title = '标题', onPress = () => {} }) => {
           {title}
         </Text>
       </TouchableOpacity>
-    </View>
+    </Animated.View>
   );
 };
