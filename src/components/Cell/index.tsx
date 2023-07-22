@@ -3,6 +3,7 @@ import { TouchableOpacity, Text, View, TouchableHighlight } from 'react-native';
 import IconFont from '../iconFont';
 import { useThemeStyle } from '../../hooks/useTheme';
 import { Shadow } from 'react-native-shadow-2';
+import { useScaleTouch } from '../../hooks/useScaleTouch';
 
 export const Cell = ({
   title = '关于',
@@ -11,8 +12,15 @@ export const Cell = ({
   renderRight = undefined,
 }) => {
   const Theme = useThemeStyle();
+  const { onLongPress, onPressOut, scaleValue } = useScaleTouch();
   return (
     <TouchableHighlight
+      onLongPress={() => {
+        onLongPress();
+      }}
+      onPressOut={() => {
+        onPressOut();
+      }}
       activeOpacity={0.7}
       underlayColor={Theme.bgColorTertiary}
       onPress={() => {
