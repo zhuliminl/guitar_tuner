@@ -15,6 +15,7 @@ import {
   getOctave,
   getStandardFrequency,
 } from '../../utils/music/pitch';
+import { Switch } from '../../components/Switch';
 
 type Props = BottomTabScreenProps<RootStackParamList, 'Tuner'>;
 export default ({ navigation }: Props) => {
@@ -22,6 +23,7 @@ export default ({ navigation }: Props) => {
   const [noteString, setNoteString] = useState<string>();
   const [standFrequency, setStandFrequency] = useState<number>();
   const [octave, setOctave] = useState<number>();
+  const [on, setOn] = useState(false);
 
   const withPermission = usePermissionRecordAudio();
 
@@ -88,6 +90,12 @@ export default ({ navigation }: Props) => {
         title="选择乐器"
         onPress={() => {
           navigation.navigate('InstrumentsCate');
+        }}
+      />
+      <Switch
+        isActive={on}
+        onPress={(isActive: any) => {
+          setOn(!isActive);
         }}
       />
       <LargeTitle title={noteString} />

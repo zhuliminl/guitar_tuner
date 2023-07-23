@@ -20,7 +20,8 @@ export const Cell = ({
   ...props
 }) => {
   const Theme = useThemeStyle();
-  const { onLongPress, onPressOut } = props;
+  const { onLongPress, onPressOut, isLast, isFirst } = props;
+  const cellHeight = Theme.sizeCellHeight;
   return (
     <TouchableHighlight
       onLongPress={() => {
@@ -37,7 +38,9 @@ export const Cell = ({
       style={{}}>
       <View
         style={{
-          height: Theme.sizeCellHeight,
+          marginTop: isFirst ? Theme.scale * 2 : 0,
+          marginBottom: isLast ? Theme.scale * 2 : 0,
+          height: cellHeight,
           flexDirection: 'row',
           paddingLeft: Theme.sizeCardPadding,
         }}>
@@ -71,7 +74,6 @@ export const Cell = ({
         {/* 箭头 */}
         <View
           style={{
-            height: Theme.sizeCellHeight,
             justifyContent: 'center',
             alignItems: 'center',
             marginRight: Theme.sizeCardPadding,
@@ -86,11 +88,16 @@ export const Cell = ({
 export const CellGroup = ({ title = '', ...props }) => {
   const Theme = useThemeStyle();
   const { onLongPress, onPressOut, scaleValue } = useScaleTouch();
+  const totalCount = React.Children.count(props.children);
 
   // 牛逼的操作
   const renderChildren = () => {
-    return React.Children.map(props.children, child => {
+    return React.Children.map(props.children, (child, index) => {
+      const isFirst = index === 0;
+      const isLast = index === totalCount - 1;
       return React.cloneElement(child, {
+        isFirst,
+        isLast,
         onLongPress,
         onPressOut,
       });

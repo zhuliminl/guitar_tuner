@@ -30,6 +30,7 @@ export enum subCategoryEnum {
 }
 
 export interface InstrumentInterface {
+  id: string;
   category: categoryEnum;
   subCategory: subCategoryEnum;
   label: string;
@@ -40,6 +41,7 @@ export interface InstrumentInterface {
 
 export const instruments: Array<InstrumentInterface> = [
   {
+    id: '1',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦',
@@ -47,6 +49,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['E2', 'A2', 'D3', 'G3', 'B3', 'E4'],
   },
   {
+    id: '2',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-重力',
@@ -54,6 +57,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['D2', 'A2', 'D3', 'G3', 'B3', 'E4'],
   },
   {
+    id: '3',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-重力',
@@ -61,6 +65,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['D2', 'A2', 'D3', 'G3', 'B3', 'D4'],
   },
   {
+    id: '4',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-重力',
@@ -68,6 +73,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['D2', 'A2', 'D3', 'G3', 'A3', 'D4'],
   },
   {
+    id: '5',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-重力',
@@ -75,6 +81,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['D2', 'A2', 'D3', 'D3', 'A3', 'D4'],
   },
   {
+    id: '6',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-重力',
@@ -82,6 +89,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['C2#', 'G2#', 'C3#', 'F3#', 'A3#', 'D4#'],
   },
   {
+    id: '7',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-重力',
@@ -89,6 +97,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['C2', 'G2', 'C3', 'F3', 'A3', 'D4'],
   },
   {
+    id: '8',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-重力',
@@ -96,6 +105,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['B1', 'F2#', 'B2', 'E3', 'G3#', 'C4#'],
   },
   {
+    id: '9',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-重力',
@@ -104,6 +114,7 @@ export const instruments: Array<InstrumentInterface> = [
   },
   // 开放
   {
+    id: '10',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-开放',
@@ -111,6 +122,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['C2', 'G2', 'C3', 'G3', 'C4', 'E4'],
   },
   {
+    id: '11',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-开放',
@@ -118,6 +130,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['E2', 'B2', 'E3', 'G3#', 'B3', 'E4'],
   },
   {
+    id: '12',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-开放',
@@ -125,6 +138,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['C2', 'F2', 'C3', 'F3', 'A3', 'F4'],
   },
   {
+    id: '13',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-开放',
@@ -132,6 +146,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['D2', 'G2', 'D3', 'G3', 'B3', 'D4'],
   },
   {
+    id: '14',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-开放',
@@ -139,6 +154,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['E2', 'A2', 'C3#', 'E3', 'A3', 'E4'],
   },
   {
+    id: '15',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-开放',
@@ -146,6 +162,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['E2', 'A2', 'E3', 'A3', 'C4#', 'E4'],
   },
   {
+    id: '16',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-开放',
@@ -153,6 +170,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['E2', 'A2', 'E3', 'A3', 'C4', 'E4'],
   },
   {
+    id: '17',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-开放',
@@ -160,6 +178,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['E2', 'B2', 'E3', 'G3', 'B3', 'E4'],
   },
   {
+    id: '18',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-开放',
@@ -167,6 +186,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['D2', 'A2', 'D3', 'F3#', 'A3', 'D4'],
   },
   {
+    id: '19',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他6弦,
     label: '吉他6弦-开放',
@@ -184,6 +204,7 @@ export const instruments: Array<InstrumentInterface> = [
 
   // 七弦吉他
   {
+    id: '20',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他7弦,
     label: '吉他7弦',
@@ -191,6 +212,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['B1', 'E2', 'A2', 'D3', 'G3', 'B3', 'E4'],
   },
   {
+    id: '21',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他7弦,
     label: '吉他7弦',
@@ -198,6 +220,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['A1', 'E2', 'A2', 'D3', 'G3', 'B3', 'E4'],
   },
   {
+    id: '22',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他7弦,
     label: '吉他7弦',
@@ -205,6 +228,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['D2', 'G2', 'B2', 'D3', 'G3', 'B3', 'D4'],
   },
   {
+    id: '23',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他7弦,
     label: '吉他7弦',
@@ -213,6 +237,7 @@ export const instruments: Array<InstrumentInterface> = [
   },
   // 12 弦吉他
   {
+    id: '24',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他12弦,
     label: '吉他12弦',
@@ -233,6 +258,7 @@ export const instruments: Array<InstrumentInterface> = [
     ],
   },
   {
+    id: '25',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他12弦,
     label: '吉他12弦',
@@ -253,6 +279,7 @@ export const instruments: Array<InstrumentInterface> = [
     ],
   },
   {
+    id: '26',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他12弦,
     label: '吉他12弦',
@@ -273,6 +300,7 @@ export const instruments: Array<InstrumentInterface> = [
     ],
   },
   {
+    id: '27',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他12弦,
     label: '吉他12弦',
@@ -293,6 +321,7 @@ export const instruments: Array<InstrumentInterface> = [
     ],
   },
   {
+    id: '28',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他12弦,
     label: '吉他12弦',
@@ -313,6 +342,7 @@ export const instruments: Array<InstrumentInterface> = [
     ],
   },
   {
+    id: '29',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他12弦,
     label: '吉他12弦',
@@ -333,6 +363,7 @@ export const instruments: Array<InstrumentInterface> = [
     ],
   },
   {
+    id: '30',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他12弦,
     label: '吉他12弦',
@@ -353,6 +384,7 @@ export const instruments: Array<InstrumentInterface> = [
     ],
   },
   {
+    id: '31',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他12弦,
     label: '吉他12弦',
@@ -373,6 +405,7 @@ export const instruments: Array<InstrumentInterface> = [
     ],
   },
   {
+    id: '32',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他12弦,
     label: '吉他12弦',
@@ -393,6 +426,7 @@ export const instruments: Array<InstrumentInterface> = [
     ],
   },
   {
+    id: '33',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他12弦,
     label: '吉他12弦',
@@ -413,6 +447,7 @@ export const instruments: Array<InstrumentInterface> = [
     ],
   },
   {
+    id: '34',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他12弦,
     label: '吉他12弦',
@@ -433,6 +468,7 @@ export const instruments: Array<InstrumentInterface> = [
     ],
   },
   {
+    id: '35',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他12弦,
     label: '吉他12弦',
@@ -453,6 +489,7 @@ export const instruments: Array<InstrumentInterface> = [
     ],
   },
   {
+    id: '36',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他12弦,
     label: '吉他12弦',
@@ -473,6 +510,7 @@ export const instruments: Array<InstrumentInterface> = [
     ],
   },
   {
+    id: '37',
     category: categoryEnum.吉他,
     subCategory: subCategoryEnum.吉他12弦,
     label: '吉他12弦',
@@ -494,6 +532,7 @@ export const instruments: Array<InstrumentInterface> = [
   },
   // 贝斯
   {
+    id: '38',
     category: categoryEnum.贝斯,
     subCategory: subCategoryEnum.贝斯4弦,
     label: '贝斯4弦',
@@ -501,6 +540,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['E1', 'A1', 'D2', 'G2'],
   },
   {
+    id: '39',
     category: categoryEnum.贝斯,
     subCategory: subCategoryEnum.贝斯4弦,
     label: '贝斯4弦',
@@ -508,6 +548,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['D1', 'A1', 'D2', 'G2'],
   },
   {
+    id: '40',
     category: categoryEnum.贝斯,
     subCategory: subCategoryEnum.贝斯4弦,
     label: '贝斯4弦',
@@ -515,6 +556,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['D1#', 'G1#', 'C2#', 'F2#'],
   },
   {
+    id: '41',
     category: categoryEnum.贝斯,
     subCategory: subCategoryEnum.贝斯4弦,
     label: '贝斯4弦',
@@ -522,6 +564,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['C1', 'G1', 'C2', 'F2'],
   },
   {
+    id: '42',
     category: categoryEnum.贝斯,
     subCategory: subCategoryEnum.贝斯4弦,
     label: '贝斯4弦',
@@ -529,6 +572,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['C1', 'A1', 'D2', 'G2'],
   },
   {
+    id: '43',
     category: categoryEnum.贝斯,
     subCategory: subCategoryEnum.贝斯4弦,
     label: '贝斯4弦',
@@ -536,6 +580,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['B0', 'E1', 'A1', 'D2'],
   },
   {
+    id: '44',
     category: categoryEnum.贝斯,
     subCategory: subCategoryEnum.贝斯5弦,
     label: '贝斯5弦',
@@ -543,6 +588,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['B0', 'E1', 'A1', 'D2', 'G2'],
   },
   {
+    id: '45',
     category: categoryEnum.贝斯,
     subCategory: subCategoryEnum.贝斯5弦,
     label: '贝斯5弦',
@@ -550,6 +596,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['A0#', 'D1#', 'G1#', 'C2#', 'F2#'],
   },
   {
+    id: '46',
     category: categoryEnum.贝斯,
     subCategory: subCategoryEnum.贝斯5弦,
     label: '贝斯5弦',
@@ -557,6 +604,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['A0', 'D1', 'G1', 'C2', 'F2'],
   },
   {
+    id: '47',
     category: categoryEnum.贝斯,
     subCategory: subCategoryEnum.贝斯5弦,
     label: '贝斯5弦',
@@ -565,6 +613,7 @@ export const instruments: Array<InstrumentInterface> = [
   },
   // 尤克里里
   {
+    id: '48',
     category: categoryEnum.尤克里里,
     subCategory: subCategoryEnum.尤克里里,
     label: '尤克里里',
@@ -572,6 +621,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['G4', 'C4', 'E4', 'A4'],
   },
   {
+    id: '49',
     category: categoryEnum.尤克里里,
     subCategory: subCategoryEnum.尤克里里,
     label: '尤克里里',
@@ -579,6 +629,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['A4', 'D4', 'F4#', 'B4'],
   },
   {
+    id: '50',
     category: categoryEnum.尤克里里,
     subCategory: subCategoryEnum.尤克里里,
     label: '尤克里里',
@@ -586,6 +637,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['G3', 'C4', 'E4', 'A4'],
   },
   {
+    id: '51',
     category: categoryEnum.尤克里里,
     subCategory: subCategoryEnum.尤克里里,
     label: '尤克里里',
@@ -593,6 +645,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['A3', 'D4', 'F4#', 'B4'],
   },
   {
+    id: '52',
     category: categoryEnum.尤克里里,
     subCategory: subCategoryEnum.尤克里里,
     label: '尤克里里',
@@ -600,6 +653,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['A3', 'D4', 'F4#', 'B4'],
   },
   {
+    id: '53',
     category: categoryEnum.尤克里里,
     subCategory: subCategoryEnum.尤克里里,
     label: '尤克里里',
@@ -607,6 +661,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['F4#', 'B3', 'D4#', 'G4#'],
   },
   {
+    id: '54',
     category: categoryEnum.尤克里里,
     subCategory: subCategoryEnum.尤克里里,
     label: '尤克里里',
@@ -615,6 +670,7 @@ export const instruments: Array<InstrumentInterface> = [
   },
   // 提琴
   {
+    id: '55',
     category: categoryEnum.提琴,
     subCategory: subCategoryEnum.小提琴,
     label: '小提琴',
@@ -622,6 +678,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['G3', 'D4', 'A4', 'E5'],
   },
   {
+    id: '56',
     category: categoryEnum.提琴,
     subCategory: subCategoryEnum.中提琴,
     label: '中提琴',
@@ -629,6 +686,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['C3', 'G3', 'D4', 'A4'],
   },
   {
+    id: '57',
     category: categoryEnum.提琴,
     subCategory: subCategoryEnum.大提琴,
     label: '大提琴',
@@ -636,6 +694,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['C2', 'G2', 'D3', 'A3'],
   },
   {
+    id: '58',
     category: categoryEnum.提琴,
     subCategory: subCategoryEnum.民族小提琴,
     label: '民族小提琴',
@@ -643,6 +702,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['G3', 'D4', 'A4', 'E5'],
   },
   {
+    id: '59',
     category: categoryEnum.提琴,
     subCategory: subCategoryEnum.民族小提琴,
     label: '民族小提琴',
@@ -650,6 +710,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['F3', 'C4', 'G4', 'D5'],
   },
   {
+    id: '60',
     category: categoryEnum.提琴,
     subCategory: subCategoryEnum.民族小提琴,
     label: '民族小提琴',
@@ -657,6 +718,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['G3', 'D4', 'G4', 'B4'],
   },
   {
+    id: '61',
     category: categoryEnum.提琴,
     subCategory: subCategoryEnum.民族小提琴,
     label: '民族小提琴',
@@ -664,6 +726,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['G3', 'D4', 'G4', 'D5'],
   },
   {
+    id: '62',
     category: categoryEnum.提琴,
     subCategory: subCategoryEnum.民族小提琴,
     label: '民族小提琴',
@@ -671,6 +734,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['G3', 'D4', 'A4', 'D5'],
   },
   {
+    id: '63',
     category: categoryEnum.提琴,
     subCategory: subCategoryEnum.民族小提琴,
     label: '民族小提琴',
@@ -678,6 +742,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['D3', 'D4', 'A4', 'D5'],
   },
   {
+    id: '64',
     category: categoryEnum.提琴,
     subCategory: subCategoryEnum.民族小提琴,
     label: '民族小提琴',
@@ -685,6 +750,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['A3', 'D4', 'A4', 'E5'],
   },
   {
+    id: '65',
     category: categoryEnum.提琴,
     subCategory: subCategoryEnum.民族小提琴,
     label: '民族小提琴',
@@ -692,6 +758,7 @@ export const instruments: Array<InstrumentInterface> = [
     notes: ['A3', 'E4', 'A4', 'E5'],
   },
   {
+    id: '66',
     category: categoryEnum.提琴,
     subCategory: subCategoryEnum.民族小提琴,
     label: '民族小提琴',

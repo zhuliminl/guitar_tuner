@@ -14,6 +14,7 @@ import { useThemeStyle } from '../../hooks/useTheme';
 import { RootStackParamList } from '../../tabs';
 import { instruments } from '../../utils/music/instruments';
 import Check from '../../components/Check';
+import { useCurrentInsId, useCurrentInsIdSet } from '../../hooks/useCurrentIns';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'InstrumentsList'>;
 
@@ -32,6 +33,8 @@ export default ({ route, navigation }: Props) => {
   const Theme = useThemeStyle();
   const tagWidth = 24;
   const tagTotalWidth = (tagWidth + Theme.scale) * 6;
+  const currentId = useCurrentInsId();
+  const setCurrentInsId = useCurrentInsIdSet();
   return (
     <SafeAreaView style={styles.container}>
       <Nav title={cateName} />
@@ -75,7 +78,9 @@ export default ({ route, navigation }: Props) => {
           return (
             <TouchableHighlight
               underlayColor={Theme.bgColorTertiary}
-              onPress={() => {}}>
+              onPress={() => {
+                setCurrentInsId(item.id);
+              }}>
               <View
                 style={{
                   alignItems: 'center',
@@ -148,7 +153,7 @@ export default ({ route, navigation }: Props) => {
                     width: 16,
                     marginLeft: Theme.scale * 3,
                   }}>
-                  {index == 5 && <Check isActive={true} />}
+                  {item.id === currentId && <Check isActive={true} />}
                 </View>
               </View>
             </TouchableHighlight>
