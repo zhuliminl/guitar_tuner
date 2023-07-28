@@ -12,14 +12,14 @@ export default ({ fill = '#999' }: Props) => {
   const value = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    Animated.loop(
-      Animated.timing(value, {
-        duration: 1000,
-        toValue: 20,
-        useNativeDriver: true,
-        easing: Easing.linear,
-      }),
-    ).start();
+    // Animated.loop(
+    //   Animated.timing(value, {
+    //     duration: 1000,
+    //     toValue: 20,
+    //     useNativeDriver: true,
+    //     easing: Easing.linear,
+    //   }),
+    // ).start();
   }, []);
 
   const Theme = useThemeStyle();
@@ -48,15 +48,13 @@ export default ({ fill = '#999' }: Props) => {
           height: 95,
         }}></LinearGradient>
       <Animated.View
-        style={
-          {
-            // transform: [
-            //   {
-            //     translateY: value,
-            //   },
-            // ],
-          }
-        }>
+        style={{
+          transform: [
+            {
+              translateY: value,
+            },
+          ],
+        }}>
         <Svg height={hLines * scale} width={Theme.windowWidth}>
           {Array.from({ length: hLines }).map((item, i) => {
             return (
@@ -73,6 +71,7 @@ export default ({ fill = '#999' }: Props) => {
             );
           })}
           {Array.from({ length: VLines }).map((item, i) => {
+            if (i == 0) return null;
             return (
               <Line
                 key={i}

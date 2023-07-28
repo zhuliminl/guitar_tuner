@@ -13,8 +13,8 @@ interface ThemeState {
 }
 
 const useThemeStore = create<ThemeState>((set, get) => ({
-  // theme: ThemeType.light,
-  theme: ThemeType.dark,
+  theme: ThemeType.light,
+  // theme: ThemeType.dark,
   setTheme: theme => {
     set({
       theme,
