@@ -7,7 +7,12 @@ import {
 } from 'react-native';
 import { useThemeStyle } from '../../hooks/useTheme';
 
-export const Switch = ({ isActive = false, onPress = () => {} }) => {
+interface Props {
+  isActive: boolean;
+  onPress: (isActive: boolean) => void;
+}
+
+export const Switch = ({ isActive = false, onPress = () => {} }: Props) => {
   const value = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -24,13 +29,15 @@ export const Switch = ({ isActive = false, onPress = () => {} }) => {
     }
   }, [isActive]);
 
+  const sizeWidth = 44;
+  const sizeHeight = 22;
+  const sizeDot = 16;
+  const p = (sizeHeight - sizeDot) / 2;
+
   const tX = value.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, 10],
+    outputRange: [p, sizeWidth - sizeDot - p],
   });
-  const sizeWidth = 30;
-  const sizeHeight = 30;
-  const sizeDot = 30;
 
   const Theme = useThemeStyle();
   return (
@@ -42,20 +49,36 @@ export const Switch = ({ isActive = false, onPress = () => {} }) => {
         style={{
           width: sizeWidth,
           height: sizeHeight,
-          backgroundColor: Theme.bgColorTertiary,
+          backgroundColor: isActive ? Theme.colorSafe : Theme.bgColorTertiary,
+          borderRadius: sizeHeight / 2,
+          justifyContent: 'center',
         }}>
         <Animated.View
           style={{
             height: sizeDot,
             width: sizeDot,
+            justifyContent: 'center',
+            alignItems: 'center',
             borderRadius: sizeDot / 2,
-            backgroundColor: Theme.colorSafe,
+            backgroundColor: isActive
+              ? Theme.bgColorPrimary
+              : Theme.bgColorTertiary,
             transform: [
               {
                 translateX: tX,
               },
             ],
-          }}></Animated.View>
+          }}>
+          <View
+            style={{
+              height: sizeDot - 4,
+              width: sizeDot - 4,
+              borderRadius: (sizeDot - 4) / 2,
+              backgroundColor: isActive
+                ? Theme.bgColorPrimary
+                : Theme.bgColorPrimary,
+            }}></View>
+        </Animated.View>
       </View>
     </TouchableWithoutFeedback>
   );
