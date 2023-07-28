@@ -16,6 +16,8 @@ import {
   getStandardFrequency,
 } from '../../utils/music/pitch';
 import { Switch } from '../../components/Switch';
+import AnimatedBackground from './AnimatedBackground';
+import { useThemeStyle } from '../../hooks/useTheme';
 
 type Props = BottomTabScreenProps<RootStackParamList, 'Tuner'>;
 export default ({ navigation }: Props) => {
@@ -36,7 +38,7 @@ export default ({ navigation }: Props) => {
         // bitsPerChannel: 16,
         // channelsPerFrame: 1,
       });
-      showToast('开始录音初始化');
+      // showToast('开始录音初始化');
     });
 
     const pitcherFinder = createPitchFinder({ sampleRate });
@@ -59,11 +61,13 @@ export default ({ navigation }: Props) => {
   }, []);
 
   const showToast = useToast();
+  const Theme = useThemeStyle();
 
   return (
     <SafeAreaView style={styles.container}>
+      <AnimatedBackground fill={Theme.bgColorTertiary} />
       {/* <LargeTitle title={'调音器'} /> */}
-      <FullButton
+      {/* <FullButton
         title="获取录音权限"
         onPress={() => {
           showToast('获取录音权限', ToastType.Warning);
@@ -101,7 +105,7 @@ export default ({ navigation }: Props) => {
       <LargeTitle title={noteString} />
       <LargeTitle title={note} />
       <LargeTitle title={standFrequency} />
-      <LargeTitle title={octave} />
+      <LargeTitle title={octave} /> */}
     </SafeAreaView>
   );
 };
