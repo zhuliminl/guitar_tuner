@@ -12,25 +12,30 @@ export default ({ fill = '#999' }: Props) => {
   const value = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    // Animated.loop(
-    //   Animated.timing(value, {
-    //     duration: 1000,
-    //     toValue: 20,
-    //     useNativeDriver: true,
-    //     easing: Easing.linear,
-    //   }),
-    // ).start();
+    Animated.loop(
+      Animated.timing(value, {
+        duration: 1000,
+        toValue: 20,
+        useNativeDriver: true,
+        easing: Easing.linear,
+      }),
+    ).start();
   }, []);
 
   const Theme = useThemeStyle();
   const scale = 20;
   const hLines = 19;
   const VLines = Math.floor(Theme.windowWidth / scale);
+  const transparentColor =
+    (Theme.bgColorPrimary as string).split(',').slice(0, 3).join(',') + ',0)';
 
   return (
-    <View>
+    <View
+      style={{
+        overflow: 'hidden',
+      }}>
       <LinearGradient
-        colors={[Theme.bgColorPrimary, 'rgba(0,0,0,0)']}
+        colors={[Theme.bgColorPrimary, transparentColor]}
         style={{
           position: 'absolute',
           top: -2,
@@ -39,7 +44,7 @@ export default ({ fill = '#999' }: Props) => {
           height: 90,
         }}></LinearGradient>
       <LinearGradient
-        colors={['rgba(0,0,0,0)', Theme.bgColorPrimary]}
+        colors={[transparentColor, Theme.bgColorPrimary]}
         style={{
           position: 'absolute',
           bottom: -2,
@@ -71,14 +76,13 @@ export default ({ fill = '#999' }: Props) => {
             );
           })}
           {Array.from({ length: VLines }).map((item, i) => {
-            if (i == 0) return null;
             return (
               <Line
                 key={i}
                 y1="0"
                 y2={Theme.windowWidth}
-                x1={scale * i}
-                x2={scale * i}
+                x1={scale * (i + 1)}
+                x2={scale * (i + 1)}
                 stroke={fill}
                 strokeWidth="1"
                 strokeLinecap="square"

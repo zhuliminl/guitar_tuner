@@ -54,7 +54,8 @@ export const useThemeStyle = (options?: ThemeStyleOptions) => {
   }
 
   let style = {
-    bgColorPrimary: '#FAFAFA',
+    // bgColorPrimary: '#FAFAFA',
+    bgColorPrimary: 'rgba(250,250,250,1)',
     bgColorSecondary: '#FFF',
     bgColorTertiary: '#EEE',
 
@@ -110,7 +111,7 @@ export const useThemeStyle = (options?: ThemeStyleOptions) => {
   };
 
   if (themeType === ThemeType.dark) {
-    style.bgColorPrimary = '#111';
+    style.bgColorPrimary = 'rgba(17,17,17,1)';
     style.bgColorSecondary = '#333';
     style.bgColorTertiary = '#444';
 
@@ -122,7 +123,7 @@ export const useThemeStyle = (options?: ThemeStyleOptions) => {
   }
 
   if (themeType === ThemeType.style1) {
-    style.bgColorPrimary = '#222';
+    style.bgColorPrimary = 'rgba(34,34,34,1)';
     style.bgColorSecondary = '#444';
     style.bgColorTertiary = '#555';
 
