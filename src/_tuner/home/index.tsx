@@ -1,6 +1,6 @@
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Animated, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FullButton from '../../components/FullButton';
 import { LargeTitle } from '../../components/LargeTitle';
@@ -18,6 +18,8 @@ import {
 import { Switch } from '../../components/Switch';
 import AnimatedBackground from './AnimatedBackground';
 import { useThemeStyle } from '../../hooks/useTheme';
+import { getCents } from '../../utils/music/pitch';
+import AnimatedCents from './AnimatedCents';
 
 type Props = BottomTabScreenProps<RootStackParamList, 'Tuner'>;
 export default ({ navigation }: Props) => {
@@ -25,6 +27,7 @@ export default ({ navigation }: Props) => {
   const [noteString, setNoteString] = useState<string>();
   const [standFrequency, setStandFrequency] = useState<number>();
   const [octave, setOctave] = useState<number>();
+  const [cents, setCents] = useState<number>(0);
   const [on, setOn] = useState(false);
 
   const withPermission = usePermissionRecordAudio();
@@ -33,7 +36,8 @@ export default ({ navigation }: Props) => {
     const sampleRate = 22050;
     withPermission(() => {
       RecordingModule?.init({
-        bufferSize: 2048,
+        bufferSize: 2048 * 1,
+        // bufferSize: 4096,
         sampleRate,
         // bitsPerChannel: 16,
         // channelsPerFrame: 1,
@@ -44,7 +48,10 @@ export default ({ navigation }: Props) => {
     const pitcherFinder = createPitchFinder({ sampleRate });
     const sub = RecordingModule.addRecordingEventListener(data => {
       const frequency = pitcherFinder(data);
+      // const frequency = 440;
+      // const frequency = 261.6;
       if (frequency) {
+        console.log('saul HHHH', frequency);
         const note = getNote(frequency);
         setNote(note);
         const stf = getStandardFrequency(frequency);
@@ -53,6 +60,10 @@ export default ({ navigation }: Props) => {
         setNoteString(noteString);
         const ot = getOctave(note);
         setOctave(ot);
+        const cents = getCents(frequency, note);
+        setCents(cents);
+        // console.log('saul RRR', frequency, note, stf);
+        console.log('saul fuck', getCents(frequency, note));
       }
     });
     return () => {
@@ -65,9 +76,20 @@ export default ({ navigation }: Props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <AnimatedBackground fill={Theme.bgColorTertiary} />
-      {/* <LargeTitle title={'调音器'} /> */}
-      {/* <FullButton
+      <View
+        style={{
+          position: 'absolute',
+        }}>
+        <AnimatedBackground fill={Theme.bgColorTertiary} />
+      </View>
+      <View
+        style={{
+          position: 'absolute',
+        }}>
+        <AnimatedCents cents={cents} />
+      </View>
+      <LargeTitle title={'调音器'} />
+      <FullButton
         title="获取录音权限"
         onPress={() => {
           showToast('获取录音权限', ToastType.Warning);
@@ -90,6 +112,7 @@ export default ({ navigation }: Props) => {
           });
         }}
       />
+      {/*
       <FullButton
         title="选择乐器"
         onPress={() => {
@@ -102,10 +125,11 @@ export default ({ navigation }: Props) => {
           setOn(!isActive);
         }}
       />
+      */}
       <LargeTitle title={noteString} />
       <LargeTitle title={note} />
       <LargeTitle title={standFrequency} />
-      <LargeTitle title={octave} /> */}
+      <LargeTitle title={octave} />
     </SafeAreaView>
   );
 };
