@@ -70,7 +70,9 @@ class RecordingModule extends ReactContextBaseJavaModule {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Log.d(TAG, "run: >>>>>>>>>>>>>>>>>" + pitchInHz);
+                        WritableMap params = Arguments.createMap();
+                        params.putString("frequency", Float.toString(pitchInHz));
+                        eventEmitter.emit("recording", params);
                     }
                 });
             }

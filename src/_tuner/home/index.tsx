@@ -49,6 +49,7 @@ export default ({ navigation }: Props) => {
     const sub = RecordingModule.addRecordingEventListener(data => {
       // const frequency = pitcherFinder(data);
       const frequency = (+data.frequency).toFixed(2);
+      console.log('saul FFFFf', frequency);
 
       if (frequency < 1) {
         return;
