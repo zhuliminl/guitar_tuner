@@ -45,11 +45,10 @@ export default ({ navigation }: Props) => {
       // showToast('开始录音初始化');
     });
 
-    const pitcherFinder = createPitchFinder({ sampleRate });
-    const sub = RecordingModule.addRecordingEventListener(data => {
+    const getPitch = data => {
       // const frequency = pitcherFinder(data);
       const frequency = (+data.frequency).toFixed(2);
-      console.log('saul FFFFf', frequency);
+      // console.log('saul FFFFf', frequency);
 
       if (frequency < 1) {
         return;
@@ -72,7 +71,9 @@ export default ({ navigation }: Props) => {
         // console.log('saul RRR', frequency, note, stf);
         // console.log('saul fuck', getCents(frequency, note));
       }
-    });
+    };
+
+    const sub = RecordingModule.addRecordingEventListener(getPitch);
     return () => {
       sub.remove();
     };

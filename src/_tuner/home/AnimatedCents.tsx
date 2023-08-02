@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Text, Animated, Easing } from 'react-native';
 import { useThemeStyle } from '../../hooks/useTheme';
+import useThrottle from '../../hooks/useThrottle';
 
 interface Props {
   cents: number | undefined;
