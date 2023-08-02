@@ -15,6 +15,7 @@ export default {
   },
   start: () => Recording.start(),
   stop: () => Recording.stop(),
+  getPitch: () => Recording.getPitch(),
   addRecordingEventListener: (listener: (data: any) => void) => {
     const eventEmitter = new NativeEventEmitter(Recording);
     const sub = eventEmitter.addListener('recording', listener);

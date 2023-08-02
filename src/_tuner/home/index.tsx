@@ -35,23 +35,29 @@ export default ({ navigation }: Props) => {
   useEffect(() => {
     const sampleRate = 22050;
     withPermission(() => {
-      RecordingModule?.init({
-        bufferSize: 2048 * 1,
-        // bufferSize: 4096,
-        sampleRate,
-        // bitsPerChannel: 16,
-        // channelsPerFrame: 1,
-      });
+      // RecordingModule?.init({
+      //   bufferSize: 2048 * 1,
+      //   // bufferSize: 4096,
+      //   sampleRate,
+      //   // bitsPerChannel: 16,
+      //   // channelsPerFrame: 1,
+      // });
       // showToast('开始录音初始化');
     });
 
     const pitcherFinder = createPitchFinder({ sampleRate });
     const sub = RecordingModule.addRecordingEventListener(data => {
-      const frequency = pitcherFinder(data);
+      // const frequency = pitcherFinder(data);
+      const frequency = (+data.frequency).toFixed(2);
+
+      if (frequency < 1) {
+        return;
+      }
       // const frequency = 440;
       // const frequency = 261.6;
+      // const frequency = 261.6;
+      // return;
       if (frequency) {
-        console.log('saul HHHH', frequency);
         const note = getNote(frequency);
         setNote(note);
         const stf = getStandardFrequency(frequency);
@@ -63,7 +69,7 @@ export default ({ navigation }: Props) => {
         const cents = getCents(frequency, note);
         setCents(cents);
         // console.log('saul RRR', frequency, note, stf);
-        console.log('saul fuck', getCents(frequency, note));
+        // console.log('saul fuck', getCents(frequency, note));
       }
     });
     return () => {
@@ -96,6 +102,12 @@ export default ({ navigation }: Props) => {
         }}
       />
       <FullButton
+        title="初始化"
+        onPress={() => {
+          RecordingModule?.init({});
+        }}
+      />
+      <FullButton
         title="开始录音"
         onPress={() => {
           withPermission(() => {
@@ -109,6 +121,14 @@ export default ({ navigation }: Props) => {
         onPress={() => {
           withPermission(() => {
             RecordingModule?.stop();
+          });
+        }}
+      />
+      <FullButton
+        title="Pitch start"
+        onPress={() => {
+          withPermission(() => {
+            RecordingModule?.getPitch();
           });
         }}
       />
