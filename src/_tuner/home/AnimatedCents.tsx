@@ -16,6 +16,7 @@ export default ({ cents }: Props) => {
   const centerP = centerLine * scale;
 
   useEffect(() => {
+    // console.log('saul >>>>>', cents);
     if (cents === undefined) {
       return;
     }

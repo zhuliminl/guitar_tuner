@@ -29,6 +29,13 @@ export default ({ navigation }: Props) => {
   const [octave, setOctave] = useState<number>();
   const [cents, setCents] = useState<number>(0);
   const [on, setOn] = useState(false);
+  const [data, setData] = useState({
+    note: '',
+    cents: 0,
+    ot: '',
+    stf: '',
+    noteString: '',
+  });
 
   const withPermission = usePermissionRecordAudio();
 
@@ -45,29 +52,36 @@ export default ({ navigation }: Props) => {
       // showToast('开始录音初始化');
     });
 
-    const getPitch = data => {
-      // const frequency = pitcherFinder(data);
-      const frequency = (+data.frequency).toFixed(2);
-      // console.log('saul FFFFf', frequency);
-
+    const getPitch = _data => {
+      const frequency = (+_data.frequency).toFixed(2);
       if (frequency < 1) {
         return;
       }
+      // console.log('saul FFFFf', frequency);
       // const frequency = 440;
       // const frequency = 261.6;
       // const frequency = 261.6;
       // return;
       if (frequency) {
+        const s = Date.now();
         const note = getNote(frequency);
-        setNote(note);
-        const stf = getStandardFrequency(frequency);
-        setStandFrequency(stf);
-        const noteString = getNoteString(note);
-        setNoteString(noteString);
-        const ot = getOctave(note);
-        setOctave(ot);
         const cents = getCents(frequency, note);
-        setCents(cents);
+        // setCents(cents);
+        const ot = getOctave(note);
+        const stf = getStandardFrequency(frequency);
+        const noteString = getNoteString(note);
+        setData({
+          note,
+          cents,
+          ot,
+          stf,
+          noteString,
+        });
+        console.log('saul 花费时间', Date.now() - s);
+        // setStandFrequency(p => stf);
+        // setNoteString(p => noteString);
+        // setOctave(p => ot);
+        // setNote(p => note);
         // console.log('saul RRR', frequency, note, stf);
         // console.log('saul fuck', getCents(frequency, note));
       }
@@ -94,7 +108,7 @@ export default ({ navigation }: Props) => {
         style={{
           position: 'absolute',
         }}>
-        <AnimatedCents cents={cents} />
+        <AnimatedCents cents={data.cents} />
       </View>
       <LargeTitle title={'调音器'} />
       <FullButton
@@ -148,10 +162,10 @@ export default ({ navigation }: Props) => {
         }}
       />
       */}
-      <LargeTitle title={noteString} />
-      <LargeTitle title={note} />
-      <LargeTitle title={standFrequency} />
-      <LargeTitle title={octave} />
+      <LargeTitle title={data.noteString} />
+      <LargeTitle title={data.note} />
+      <LargeTitle title={data.stf} />
+      <LargeTitle title={data.ot} />
     </SafeAreaView>
   );
 };

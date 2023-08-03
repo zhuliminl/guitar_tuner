@@ -1,6 +1,7 @@
 import { NativeModules, NativeEventEmitter } from 'react-native';
 
 const { Recording } = NativeModules;
+const eventEmitter = new NativeEventEmitter(Recording);
 
 interface InitOptions {
   bufferSize?: number;
@@ -17,7 +18,6 @@ export default {
   stop: () => Recording.stop(),
   getPitch: () => Recording.getPitch(),
   addRecordingEventListener: (listener: (data: any) => void) => {
-    const eventEmitter = new NativeEventEmitter(Recording);
     const sub = eventEmitter.addListener('recording', listener);
     return {
       remove: () => {

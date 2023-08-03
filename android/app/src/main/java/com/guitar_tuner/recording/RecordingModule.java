@@ -67,14 +67,15 @@ class RecordingModule extends ReactContextBaseJavaModule {
             @Override
             public void handlePitch(PitchDetectionResult res, AudioEvent e) {
                 final float pitchInHz = res.getPitch();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        WritableMap params = Arguments.createMap();
-                        params.putString("frequency", Float.toString(pitchInHz));
-                        eventEmitter.emit("recording", params);
-                    }
-                });
+                WritableMap params = Arguments.createMap();
+                params.putString("frequency", Float.toString(pitchInHz));
+                eventEmitter.emit("recording", params);
+
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                    }
+//                });
             }
         };
         AudioProcessor pitchProcessor = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 22050, 1024, pdh);
@@ -101,8 +102,13 @@ class RecordingModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void removeListeners(Integer count) {
-
+        Log.d(TAG, "removeListeners: >>>>>>>>>>>>>>>>>>>>>>>>>>>");
     }
 
-
+    @Override
+    public void onCatalystInstanceDestroy() {
+        stop();
+        Toast.makeText(reactContext, "onCatalystInstanceDestroy", Toast.LENGTH_SHORT).show();
+        super.onCatalystInstanceDestroy();
+    }
 }
