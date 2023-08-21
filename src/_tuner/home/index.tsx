@@ -1,5 +1,5 @@
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FullButton from '../../components/FullButton';
@@ -29,6 +29,7 @@ export default ({ navigation }: Props) => {
   const [octave, setOctave] = useState<number>();
   const [cents, setCents] = useState<number>(0);
   const [on, setOn] = useState(false);
+  const passTime = useRef(0);
   const [data, setData] = useState({
     note: '',
     cents: 0,
@@ -53,13 +54,20 @@ export default ({ navigation }: Props) => {
     });
 
     const getPitch = _data => {
-      const frequency = (+_data.frequency).toFixed(2);
+      // console.log('saul LLLLLLLLLL', _data);
+      // console.log('saul LLLLLLLLLL', Date.now() - passTime.current);
+      passTime.current = Date.now();
+      // return;
+      // android
+      let frequency = (+_data.frequency).toFixed(2);
+
       if (frequency < 1) {
         return;
       }
       // console.log('saul FFFFf', frequency);
-      // const frequency = 440;
-      // const frequency = 261.6;
+      // const
+      // frequency = 440;
+      // frequency = 261.6;
       // const frequency = 261.6;
       // return;
       if (frequency) {
@@ -77,7 +85,7 @@ export default ({ navigation }: Props) => {
           stf,
           noteString,
         });
-        console.log('saul 花费时间', Date.now() - s);
+        // console.log('saul 花费时间', Date.now() - s);
         // setStandFrequency(p => stf);
         // setNoteString(p => noteString);
         // setOctave(p => ot);

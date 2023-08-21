@@ -14,18 +14,33 @@ export default ({ cents }: Props) => {
   const centerLine = Math.floor(VLines / 2);
   const givenLine = 10;
   const centerP = centerLine * scale;
+  const animation = useRef(null);
+  const over = useRef(true);
 
   useEffect(() => {
-    // console.log('saul >>>>>', cents);
+    console.log('saul >>>>>', cents);
     if (cents === undefined) {
       return;
     }
-    Animated.timing(value, {
+
+    if (!over.current) {
+      if (animation) {
+        animation.current.stop();
+      }
+    }
+
+    over.current = false;
+    animation.current = Animated.timing(value, {
       toValue: cents,
-      duration: 500,
+      duration: 300,
       useNativeDriver: true,
       easing: Easing.linear,
-    }).start();
+      // easing: Easing.cubic,
+    });
+    animation.current.start(() => {
+      over.current = true;
+      console.log('saul 结束');
+    });
   }, [cents]);
 
   const tx = value.interpolate({
